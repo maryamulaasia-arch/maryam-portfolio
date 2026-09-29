@@ -1,0 +1,8 @@
+---
+interface Props { headings: string[]; rows: string[][]; impact?: boolean }
+const { headings, rows, impact = false } = Astro.props;
+---
+<table class:list={['bcl-table', { 'bcl-table--impact': impact }]}>
+  <thead data-reveal><tr>{headings.map(heading => <th scope="col"><span>{heading}</span></th>)}</tr></thead>
+  <tbody>{rows.map(row => <tr data-reveal>{row.map((cell,i) => i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+</table>

@@ -1,0 +1,179 @@
+/* ONI-only desktop composition. No selectors affect the approved portfolio pages. */
+.oni-page { position:relative; width:1440px; height:18038px; margin:0 auto; overflow:hidden; background:#fdfdfb; }
+.oni-art { position:relative; width:1308px; height:16384px; transform:scale(1.1009174312); transform-origin:top left; color:#333; font:400 22px/1.57 var(--font-sans); background-image:linear-gradient(#fdfdfbcc,#fdfdfbcc),url('/images/textures/paper-grain.png'); background-size:auto,307.2px 204.8px; }
+.oni-art section { position:absolute; left:0; width:1308px; }
+.oni-art h2 { margin:0; width:100%; text-align:center; font:400 56px/1.1 var(--font-display); color:#332f2d; }
+.oni-art section > h3,.oni-about-copy h3 { margin:0; font:500 30px/1.3 var(--font-mono); color:#121212; }
+.oni-art p { margin:0; }
+.oni-art p + p { margin-top:18px; }
+/* Positioned section copy already has a measured top; sibling paragraph
+   spacing belongs only to paragraphs flowing inside a copy block. */
+.oni-art section > p { margin-top:0; }
+.oni-art strong { font-weight:600; }
+.oni-copy { position:absolute; left:276px; width:760px; }
+.oni-centered { text-align:center; }
+.oni-art img { height:auto; }
+.oni-hero { top:0; height:745px; background:var(--color-hero-teal) url('/images/textures/hero-bg-pattern.png') 0 0 / 819.2px 546.8px; }
+.oni-title { position:absolute; z-index:2; left:542px; top:91px; margin:0; font:400 84px/.96 var(--font-display); }
+.oni-title span,.oni-more-heading span { display:table; position:relative; padding:0 9px; background:#c5c7d5; box-shadow:8px 8px #121212; transform:rotate(-6deg); }
+.oni-title span + span { margin-left:36px; margin-top:-2px; transform:rotate(3deg); }
+.oni-title b,.oni-more-heading b { font-weight:400; }
+.oni-hero-devices { position:absolute; left:350px; top:190px; width:568px; filter:drop-shadow(9px 7px #121212); }
+.oni-hero-label { position:absolute; z-index:3; left:802px; top:242px; width:302px; padding:9px 11px; text-align:center; background:#dcb260; border:7px solid #fdfdfb; box-shadow:7px 7px #121212; font:500 23px/1.2 var(--font-mono); color:#121212; transform:rotate(30deg); }
+.oni-facts { position:absolute; z-index:3; left:318px; top:510px; width:644px; height:158px; color:#201c19; border:1px solid #4f4744; background:#fbd3a9 url('/images/textures/dot-grain-tan.png') center/cover; box-shadow:9px 9px #121212; font-family:var(--font-mono); }
+.oni-facts > p { height:51px; display:grid; place-items:center; border-bottom:1px solid #4f4744; font-size:23px; font-weight:500; }
+.oni-facts dl { display:grid; grid-template-columns:repeat(4,1fr); margin:0; }
+.oni-facts dl > div { text-align:center; height:106px; padding:10px; border-right:1px solid #4f4744; }
+.oni-facts dl > div:last-child { border:0; }
+.oni-facts dt { font-size:18px; font-weight:500; }
+.oni-facts dd { margin:14px 0 0; white-space:pre-line; font-size:20px; font-weight:500; line-height:1.03; }
+.oni-torn { position:absolute; left:0; width:1308px; height:320px; background:url('/images/textures/torn-paper-edge.png') center top / 1600px auto no-repeat; pointer-events:none; }
+.oni-torn--hero { top:692px; height:460px; background-size:1790px 760px; background-position:center -211px; }
+.oni-about { top:752px; height:650px; }
+.oni-about-copy { position:absolute; left:73px; top:141px; width:650px; }
+.oni-about-copy h3 { margin-bottom:27px; }
+.oni-about-copy p { font-size:22px; line-height:1.57; }
+.oni-about-copy p + p { margin-top:18px; color:#121212; }
+.oni-about-photo { position:absolute; top:122px; left:768px; width:470px; }
+.oni-ribbons { display:flex; gap:20px; color:#121212; font:500 23px/1.2 var(--font-mono); }
+.oni-ribbons > span { position:relative; flex:1; text-align:center; display:flex; flex-direction:column; justify-content:center; min-height:80px; padding:10px 15px; background:#8ddfd4; clip-path:polygon(4% 0,98% 0,94% 15%,98% 33%,96% 62%,100% 100%,0 100%,4% 84%,0 67%,4% 49%,0 19%); }
+.oni-ribbons > span::before { position:absolute; content:''; inset:0; background:url('/images/textures/dot-grain.png') center/180px; opacity:.02; pointer-events:none; }
+.oni-ribbons--yellow { margin-top:16px; }
+.oni-ribbons--yellow > span { background:#ffedbf; min-height:58px; }
+.oni-problem-role { position:absolute; top:1433px; left:0; width:1308px; }
+/* This transition follows its content, not two independently fixed section
+   heights. The paper is decoration and cannot reserve empty layout space. */
+.oni-art .oni-problem,.oni-art .oni-role { position:relative; display:flow-root; top:auto; height:auto; }
+.oni-problem { z-index:1; }
+.oni-problem-image { display:block; margin:24.4px 0 0 250px; width:800px; }
+.oni-problem-copy { position:relative; left:auto; margin:21px 0 0 276px; }
+.oni-problem-notes { margin:82px 0 0 146px; width:1008px; }
+.oni-quote { position:absolute; margin:0; background:#f8f9fa; box-shadow:0 1px 10px #0003; transform:rotate(-2deg); }
+/* Graph-paper artwork is not supplied; the quote remains HTML on its measured paper footprint. */
+.oni-quote p { font:500 italic 30px/1.22 var(--font-sans); }
+.oni-quote cite { display:block; margin-top:24px; font:500 23px/1.2 var(--font-mono); color:#666; }
+.oni-quote::before,.oni-quote::after { content:''; position:absolute; width:83px; height:21px; background:url('/images/stickers/squiggle-a.svg') center/contain no-repeat; transform:rotate(-30deg); }
+.oni-quote::before { top:0; left:-18px; }
+.oni-quote::after { bottom:1px; right:-19px; }
+.oni-problem-quote { position:relative; margin:59px 0 0 155px; width:1000px; padding:40px 45px 37px 111px; }
+.oni-sticker { position:absolute; display:block; width:64px; height:64px; background-image:url('/images/stickers/tape-scrap.png'); background-repeat:no-repeat; background-size:558px 447px; }
+.oni-sticker--heart { left:20px; bottom:12px; background-position:0 -8px; transform:rotate(-15deg); }
+.oni-sticker--chat { right:50px; top:10px; background-position:-321px -105px; transform:rotate(20deg); }
+.oni-torn--role { top:-313px; height:470px; background-size:1790px 1000px; background-position:center -290px; z-index:-1; }
+.oni-role { margin-top:88px; isolation:isolate; }
+.oni-art .oni-role-copy { position:relative; left:auto; top:auto; margin:38.4px 0 0 276px; }
+.oni-role-notes { margin:27.4px 0 0 158px; width:1008px; }
+.oni-role-ribbons { margin:44px 0 0 164px; width:980px; }
+.oni-research { top:3738px; height:1300px; }
+.oni-research-copy { top:100px; }
+.oni-research-copy .oni-centered { margin-top:30px; white-space:nowrap; }
+.oni-persona { position:absolute; left:77px; top:374px; width:668px; height:341px; padding:18px; display:grid; grid-template-columns:263px 1fr; gap:18px; background:#f9edbf; box-shadow:7px 7px #121212; color:#121212; }
+.oni-persona > img { width:263px; height:305px; object-fit:contain; }
+.oni-persona-label { font:500 19px/1.4 var(--font-mono); }
+.oni-persona h3 { font:400 40px/1.1 var(--font-display); margin:18px 0 9px; }
+.oni-persona-intro { font:400 15px/1.2 var(--font-sans); }
+.oni-persona dl { display:grid; grid-template-columns:1fr 1fr; margin:8px 0 0; border:1px solid #4f4744; }
+.oni-persona dl > div { padding:7px 9px 3px; border-bottom:1px solid #4f4744; }
+.oni-persona dl > div:nth-child(odd) { border-right:1px solid #4f4744; }
+.oni-persona dt { font:400 11px/1.3 var(--font-mono); }
+.oni-persona dd { font:500 16px/1.3 var(--font-mono); margin:3px 0 0; white-space:nowrap; }
+.oni-persona-traits { border:1px solid #4f4744; border-top:0; padding:5px; font:400 15px/1.3 var(--font-mono); text-align:center; }
+.oni-persona-note { position:absolute; padding:12px 20px 17px; color:#121212; box-shadow:8px 9px #121212; }
+.oni-persona-note::before,.oni-title span::before,.oni-more-heading span::before,.oni-hero-label::before { content:''; position:absolute; inset:0; background:url('/images/textures/dot-grain.png') center/200px; opacity:.02; pointer-events:none; }
+.oni-persona-note h3 { font:600 30px/1.2 var(--font-sans); text-align:center; margin-bottom:16px; }
+.oni-persona-note ul { padding-left:20px; margin:0; font:400 21.7px/1.2 var(--font-sans); }
+.oni-reality { left:745px; top:423px; width:466px; height:286px; background-color:#ffd08d; transform:rotate(5deg); }
+.oni-expectations { left:84px; top:720px; width:600px; height:250px; background-color:#ffdbab; transform:rotate(-5deg); }
+.oni-expectations ul { width:520px; font-size:21px; line-height:1.17; }
+.oni-expectations h3 { margin-bottom:10px; }
+.oni-success { left:623px; top:704px; width:594px; height:206px; background-color:#fbe087; transform:rotate(3deg); }
+.oni-insights-heading { position:absolute; top:1026px; width:100%; text-align:center; }
+.oni-insights { position:absolute; top:1101px; left:83px; width:1156px; }
+.oni-market { top:5090px; height:930px; }
+.oni-market-photo { position:absolute; top:75px; left:97px; width:470px; }
+.oni-market-copy { position:absolute; top:77px; left:585px; width:645px; }
+.oni-market-copy p + p { margin-top:21px; }
+.oni-market-quote { left:579px; top:421px; width:648px; padding:19px; }
+.oni-market-quote p { font-size:27px; }
+.oni-market-quote::before { display:none; }
+.oni-indian-heading { position:absolute; top:579px; width:100%; text-align:center; }
+.oni-indian-copy { top:636px; }
+.oni-indian-copy p + p { margin-top:24px; }
+.oni-competition { top:6053px; height:850px; }
+.oni-competition-copy { top:79px; }
+.oni-competition table { position:absolute; top:178px; left:73px; width:1162px; border-collapse:separate; border-spacing:0 10px; font:400 23px/1.4 var(--font-sans); text-align:center; }
+.oni-competition th,.oni-competition td { height:46px; padding:0 5px; }
+.oni-competition thead th { font-weight:500; background:url('/images/textures/torn-paper-edge.png') center/165px 110px no-repeat; }
+.oni-competition tbody th { font-weight:600; }
+.oni-opportunity-heading { position:absolute; top:540px; width:100%; text-align:center; }
+.oni-opportunity-copy { top:598px; left:294px; width:735px; }
+.oni-opportunity-quote { left:283px; top:700px; width:741px; padding:15px 32px; }
+.oni-opportunity-quote p { font-size:23px; }
+.oni-principles { top:6938px; height:610px; }
+.oni-principles-notes { position:absolute; left:146px; top:99px; width:1008px; }
+.oni-device-heading { position:absolute; top:446px; width:100%; text-align:center; }
+.oni-device-ribbons { position:absolute; left:164px; top:504px; width:980px; }
+.oni-journey { top:7598px; height:1330px; }
+.oni-journey-copy { top:78px; }
+.oni-journey-steps { position:absolute; top:204px; width:100%; text-align:center; }
+.oni-journey > img { position:absolute; left:109px; top:256px; width:1084px; }
+.oni-architecture { top:8982px; height:710px; }
+.oni-architecture > img { position:absolute; top:98px; left:201px; width:886px; }
+.oni-flow { top:9768px; height:770px; }
+.oni-flow-map { position:absolute; left:108px; top:63px; width:1088px; }
+.oni-wireframes { position:absolute; left:73px; top:277px; width:1162px; }
+.oni-ui { top:10604px; height:3000px; color:#121212; }
+.oni-home-heading { position:absolute; top:83px; width:100%; text-align:center; }
+.oni-home-copy { top:145px; }
+.oni-home-screens { position:absolute; top:289px; left:89px; width:1130px; }
+.oni-prescription-heading { position:absolute; top:862px; width:100%; text-align:center; }
+.oni-prescription-copy { top:922px; }
+.oni-prescription-screens { position:absolute; top:1260px; left:155px; width:895px; }
+.oni-annotation { position:absolute; font:400 19px/1.4 var(--font-sans); color:#555; }
+.oni-subtabs { left:1060px; top:1330px; }
+.oni-mobile-copy { top:1815px; }
+.oni-mobile-screens { position:absolute; top:1894px; left:42px; width:1220px; }
+.oni-risk-heading { position:absolute; top:2350px; width:100%; text-align:center; }
+.oni-risk-copy { top:2424px; }
+.oni-risk-screens { position:absolute; top:2582px; left:425px; width:417px; }
+.oni-risk-header { top:2617px; left:190px; }
+.oni-risk-appointment { top:2854px; left:850px; }
+.oni-validation { top:13664px; height:1190px; color:#121212; }
+.oni-validation-intro { top:90px; left:268px; }
+.oni-results { position:absolute; left:146px; top:181px; width:1008px; }
+.oni-validation-copy { top:519px; }
+.oni-validation-copy p + p { margin-top:34px; }
+.oni-learning-heading { position:absolute; top:726px; width:100%; text-align:center; }
+.oni-learnings { position:absolute; top:799px; left:73px; width:1156px; }
+.oni-sources-heading { position:absolute; top:1000px; width:100%; text-align:center; }
+.oni-source-ribbons { position:absolute; top:1057px; left:164px; width:980px; }
+.oni-source-ribbons > span { min-height:90px; }
+.oni-source-ribbons small { font:400 17px/1.25 var(--font-mono); }
+.oni-torn--end { top:14470px; height:510px; background-size:1790px 1250px; background-position:center -340px; }
+.oni-validation { z-index:1; }
+.oni-more { top:14991px; height:850px; }
+.oni-art .oni-more-heading { position:absolute; left:506px; top:5px; width:auto; font:400 84px/.96 var(--font-display); text-align:left; }
+.oni-more-heading span { background-color:#bec4e6; }
+.oni-more-heading span + span { margin-left:114px; margin-top:8px; transform:rotate(3deg); }
+.oni-more .wcard { top:211px; transform:scale(.853) !important; transform-origin:top left; }
+.oni-more .oni-more-bcl { left:178px; }
+.oni-more .oni-more-fic { left:688px; }
+/* Reused cards retain their shared implementation; only ONI's reference placement is scoped here. */
+.oni-more .wcard__title { margin-top:21px; }
+.oni-more .wcard__desc { margin-top:10px; font-size:25px; }
+.oni-more .wcard__tags { margin-top:22px; }
+.oni-more .wcard__tag { font-size:25px; padding:11px 8px; }
+.oni-more .wcard__date { font-size:33px; }
+
+/* Reuse About's printed-black treatment, with separate backing and paper
+   layers. Only explicitly marked decorative papers participate. */
+.oni-art .oni-backed { isolation:isolate; box-shadow:none; }
+.oni-black-backing { position:absolute; inset:calc(-1 * var(--oni-paper-border, 0px)); transform:translate(var(--oni-back-x, 8px),var(--oni-back-y, 8px)); background:var(--color-ink) url('/images/textures/noise-black.png') repeat; background-size:200px 200px; z-index:-2; pointer-events:none; }
+.oni-backed::after { content:''; position:absolute; inset:calc(-1 * var(--oni-paper-border, 0px)); border:inherit; background:inherit; z-index:-1; pointer-events:none; }
+.oni-hero-label { --oni-back-x:7px; --oni-back-y:7px; --oni-paper-border:7px; }
+.oni-facts { --oni-back-x:9px; --oni-back-y:9px; --oni-paper-border:1px; }
+.oni-persona { --oni-back-x:7px; --oni-back-y:7px; }
+.oni-persona-note { --oni-back-y:9px; }
+/* Preserve the shared footer; texture its dedicated backing only on ONI. */
+.oni-page .footer__bg--shadow { visibility:hidden; }
+.oni-page .footer::before { content:''; position:absolute; left:-1px; top:15px; width:1292px; height:479px; transform:scaleX(-1); background:var(--color-ink) url('/images/textures/noise-black.png') repeat; background-size:200px 200px; mask:url('/images/stickers/ticket-bg-shadow.svg') center / 100% 100% no-repeat; pointer-events:none; }

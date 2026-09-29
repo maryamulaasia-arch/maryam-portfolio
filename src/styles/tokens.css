@@ -1,0 +1,35 @@
+/*
+  Design tokens pulled from the Figma file.
+  This file only holds VALUES (colors, fonts, spacing) as CSS variables.
+  Nothing here draws anything on screen yet — components/pages will use
+  these variables once we start building the actual pages.
+
+  Values below are confirmed from the "Final about" (206:572) node.
+  More will be added as we build Landing and Work.
+*/
+
+:root {
+  /* ---- Colors ---- */
+  --color-bg: #fdfdfb;       /* page background (paper) */
+  --color-ink: #121212;      /* primary text / headings */
+  --color-text: #333333;     /* secondary body text */
+  --color-text-soft: #222222;
+  --color-red: #d03c3a;      /* "Contact me" / CTA button */
+  --color-white: #ffffff;
+  --color-headline-fill: #4f4744; /* warm charcoal used for the big collage headlines */
+  --color-hero-teal: #268cb4;     /* hero section background */
+
+  /* ---- Fonts ----
+     Font files live in /public/fonts, registered with @font-face
+     in src/styles/fonts.css. */
+  --font-mono: 'DM Mono', monospace;       /* nav, taglines, body */
+  --font-display: 'Bebas Neue', sans-serif; /* big rotated headings */
+  --font-typewriter: 'Special Elite', monospace; /* ticket footer */
+  --font-sans: 'Inter', sans-serif;        /* info cards */
+
+  /* ---- Layout ----
+     The whole page is built as a fixed-width desktop "canvas" matching
+     the Figma frame (node 206:175 is 1440px wide). Sections inside are
+     positioned with the same pixel coordinates as the design. */
+  --canvas-width: 1440px;
+}

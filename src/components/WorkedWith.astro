@@ -1,0 +1,152 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const stamps = [
+  { label: 'Better Cooperate Life', logo: '/images/logos/bcl-mark.png', logoW: 75, logoH: 34, chip: null },
+  { label: 'Oni Cares', logo: '/images/stickers/oni-cares-mark.svg', logoW: 42.897, logoH: 60, chip: null },
+  { label: 'Fic/non-fic', logo: '/images/logos/ficnonfic-icon-white.png', logoW: 30.887, logoH: 27.385, chip: '#ee6258' },
+  { label: '', logo: '/images/logos/anchae-logo.png', logoW: 152, logoH: 88, chip: null },
+];
+---
+
+<section class="worked-with" aria-label="Worked with">
+  <SectionHeading
+    class="worked-with__heading"
+    width={355}
+    height={167}
+    back={{ src: '/images/stickers/workedwith-tag-front.svg', left: 5, top: 4.5, w: 350, h: 162.5 }}
+    front={{ src: '/images/stickers/workedwith-tag-back.png', left: 0, top: -0.5, w: 350, h: 162.5 }}
+    word1={{ text: 'Worked', left: 130.97, top: -11.54, w: 254.24, h: 136.291 }}
+    word2={{ text: 'with', left: 269.41, top: 63.68, w: 152.771, h: 121.209 }}
+  />
+
+  <div class="worked-with__row" data-reveal>
+    {stamps.map((s) => (
+      <div class="stamp">
+        <img src="/images/stickers/stamp-texture.png" alt="" class="stamp__texture" aria-hidden="true" />
+        <span class="stamp__tape stamp__tape--a" aria-hidden="true">
+          <img src="/images/stickers/stamp-tape.svg" alt="" />
+        </span>
+        <span class="stamp__tape stamp__tape--b" aria-hidden="true">
+          <img src="/images/stickers/stamp-tape.svg" alt="" />
+        </span>
+        <div class="stamp__content">
+          {s.chip ? (
+            <span class="stamp__chip" style={`background:${s.chip};`}>
+              <img src={s.logo} alt="" style={`width:${s.logoW}px;height:${s.logoH}px;`} />
+            </span>
+          ) : (
+            <span class="stamp__logo-frame" style={`width:${s.logoW}px;height:${s.logoH}px;`}>
+              <img src={s.logo} alt="" class="stamp__logo" />
+            </span>
+          )}
+          {s.label && <span class="stamp__label">{s.label}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .worked-with {
+    position: absolute;
+    left: 50%;
+    top: 3408px;
+    width: 1225px;
+    height: 391px;
+    transform: translateX(-50%);
+  }
+  :global(.worked-with__heading.section-heading) {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 114.5px);
+    transform: translate(-50%, -50%);
+  }
+
+  .worked-with__row {
+    position: absolute;
+    left: 147px;
+    top: 190px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .stamp {
+    position: relative;
+    width: 188px;
+    height: 188px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stamp__texture {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220.5px;
+    height: 255.15px;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  }
+  .stamp__tape {
+    position: absolute;
+    display: block;
+    width: 112.74px;
+    height: 47.9562px;
+  }
+  .stamp__tape img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .stamp__tape--a {
+    left: -21.03px;
+    top: -12.17px;
+    transform: rotate(-27.49deg);
+  }
+  .stamp__tape--b {
+    left: 115.72px;
+    top: 152.83px;
+    transform: rotate(-27.49deg);
+  }
+
+  .stamp__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .stamp__label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .stamp__logo-frame {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .stamp__logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .stamp__chip img {
+    display: block;
+  }
+  .stamp__chip {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 4.5px;
+    flex-shrink: 0;
+  }
+</style>

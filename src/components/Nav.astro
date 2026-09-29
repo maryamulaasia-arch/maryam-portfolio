@@ -1,0 +1,261 @@
+---
+// Top nav: logo mark, Home / Works / About links, and a red "Contact me" CTA.
+// All in a hand-drawn "sticker" style — pills have a solid black offset
+// shape behind them to fake a thick drop shadow. Whichever page is
+// current gets the outlined pill + underline treatment; the other two
+// are plain links. Each item keeps its own fixed slot position
+// regardless of which one is active (matches Figma across pages).
+interface Props {
+  current?: 'home' | 'works' | 'about';
+}
+const { current = 'home' } = Astro.props;
+
+const items = [
+  {
+    key: 'home' as const,
+    href: '/',
+    label: 'Home',
+    left: 100,
+    // pill-state icon crop (40x36 box)
+    pillIcon: { h: '253.42%', l: '-128.09%', t: '-16.77%', w: '343.82%' },
+    // Home's icon (a crown) was only ever confirmed at 40x36 (its pill
+    // box); recomputed to the same absolute sprite-sheet crop at a 36x36
+    // box so it renders correctly in plain-link state too.
+    plainIcon: { h: '253.42%', l: '-142.3%', t: '-16.78%', w: '381.9%' },
+    plainIconBox: { w: 36, h: 36 },
+  },
+  {
+    key: 'works' as const,
+    href: '/work',
+    label: 'Works',
+    left: 276,
+    pillIcon: { h: '283.33%', l: '-229.86%', t: '-145.14%', w: '425%' },
+    pillIconBox: { w: 36, h: 36 },
+    plainIcon: { h: '283.33%', l: '-229.86%', t: '-145.14%', w: '425%' },
+    plainIconBox: { w: 36, h: 36 },
+  },
+  {
+    key: 'about' as const,
+    href: '/about',
+    label: 'About',
+    left: 439,
+    pillIcon: { h: '253.42%', l: '-305.76%', t: '-16.77%', w: '440.29%' },
+    pillIconBox: { w: 31, h: 36 },
+    plainIcon: { h: '253.42%', l: '-305.76%', t: '-16.77%', w: '440.29%' },
+    plainIconBox: { w: 31, h: 36 },
+  },
+];
+---
+
+<nav class="nav" aria-label="Primary">
+  <a href="/" class="nav__logo" aria-label="Maryamul Aasia — Home">
+    <span class="nav__icon-crop nav__icon-crop--logo">
+      <img
+        src="/images/logos/nav-icon-sheet.png"
+        alt=""
+        aria-hidden="true"
+        class="nav__icon-img"
+        style="height:283.33%; left:-68.39%; top:-145.14%; width:351.72%;"
+      />
+    </span>
+  </a>
+
+  {items.map((item) =>
+    item.key === current ? (
+      <a href={item.href} class="nav__pill nav__pill--active" style={`left:${item.left}px;`}>
+        <span class="nav__pill-shadow" aria-hidden="true"></span>
+        <span class="nav__pill-body">
+          <span class="nav__icon-crop" style={`width:${item.pillIconBox?.w ?? 40}px;height:${item.pillIconBox?.h ?? 36}px;`}>
+            <img
+              src="/images/logos/nav-icon-sheet.png"
+              alt=""
+              aria-hidden="true"
+              class="nav__icon-img"
+              style={`height:${item.pillIcon.h}; left:${item.pillIcon.l}; top:${item.pillIcon.t}; width:${item.pillIcon.w};`}
+            />
+          </span>
+          <span class="nav__label nav__label--dark">{item.label}</span>
+        </span>
+        <img src="/images/icons/underline-b.svg" alt="" aria-hidden="true" class="nav__underline nav__underline--active" />
+      </a>
+    ) : (
+      <a href={item.href} class="nav__link" style={`left:${item.left}px;`}>
+        <span class="nav__icon-crop" style={`width:${item.plainIconBox.w}px;height:${item.plainIconBox.h}px;`}>
+          <img
+            src="/images/logos/nav-icon-sheet.png"
+            alt=""
+            aria-hidden="true"
+            class="nav__icon-img"
+            style={`height:${item.plainIcon.h}; left:${item.plainIcon.l}; top:${item.plainIcon.t}; width:${item.plainIcon.w};`}
+          />
+        </span>
+        <span class="nav__label nav__label--dark">{item.label}</span>
+      </a>
+    )
+  )}
+
+  <a href="mailto:maryamulaasia@gmail.com" class="nav__pill nav__pill--contact">
+    <span class="nav__pill-shadow nav__pill-shadow--contact" aria-hidden="true"></span>
+    <span class="nav__pill-body--contact">
+      <span class="nav__pill-fill" aria-hidden="true"></span>
+      <span class="nav__pill-texture" aria-hidden="true"></span>
+      <span class="nav__label nav__label--light">Contact me</span>
+      <img src="/images/icons/arrow-right-sm.svg" alt="" aria-hidden="true" class="nav__arrow" />
+    </span>
+    <img src="/images/icons/underline-a.svg" alt="" aria-hidden="true" class="nav__underline nav__underline--contact" />
+  </a>
+</nav>
+
+<style>
+  .nav {
+    position: absolute;
+    left: 80px;
+    top: 20px;
+    width: 1280px;
+    height: 80px;
+  }
+
+  .nav__logo {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 36px;
+  }
+
+  .nav__icon-crop {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .nav__logo .nav__icon-crop--logo {
+    width: 44px;
+    height: 36px;
+  }
+
+  .nav__icon-img {
+    position: absolute;
+    max-width: none;
+  }
+
+  .nav__link {
+    position: absolute;
+    top: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px 0 16px;
+  }
+
+  .nav__label {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+  .nav__label--dark { color: var(--color-ink); }
+  .nav__label--light { color: var(--color-white); }
+
+  .nav__pill {
+    position: absolute;
+    top: 0;
+    display: block;
+  }
+
+  .nav__pill--active {
+    top: 3px;
+    width: 152px;
+    height: 70px;
+  }
+  .nav__pill-shadow {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 152px;
+    height: 70px;
+    border-radius: 36px;
+    border-bottom: 2px solid var(--color-ink);
+  }
+  .nav__pill-body {
+    position: relative;
+    width: 152px;
+    height: 70px;
+    border: 2px solid var(--color-ink);
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: none;
+  }
+  .nav__underline {
+    position: absolute;
+    pointer-events: none;
+  }
+  .nav__underline--active {
+    left: 71px;
+    top: 45px;
+    width: 61px;
+    height: 6px;
+  }
+
+  .nav__pill--contact {
+    left: 1078px;
+    top: 0;
+    width: 212px;
+    height: 70px;
+  }
+  .nav__pill-shadow--contact {
+    top: 4px;
+    left: 0;
+    width: 212px;
+    height: 70px;
+    border-radius: 36px;
+    border-bottom: none;
+    background: var(--color-ink);
+  }
+  .nav__pill-body--contact {
+    position: relative;
+    width: 212px;
+    height: 70px;
+    border: 2px solid var(--color-ink);
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: none;
+    overflow: hidden;
+  }
+  .nav__pill-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--color-red);
+  }
+  .nav__pill-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/dot-grain.png');
+    background-size: 204.8px 136.55px;
+    background-position: top left;
+    opacity: 0.1;
+  }
+  .nav__label--light,
+  .nav__arrow {
+    position: relative;
+  }
+  .nav__arrow {
+    width: 24px;
+    height: 24px;
+  }
+  .nav__underline--contact {
+    left: 47px;
+    top: 47px;
+    width: 103px;
+    height: 6px;
+  }
+</style>

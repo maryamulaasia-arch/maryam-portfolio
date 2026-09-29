@@ -1,0 +1,240 @@
+---
+// One "folder" project card for the Works page. A tabbed paper folder
+// (colour per project) holds the project photo; the title / description /
+// tag ribbons sit BELOW the folder. A flat black backing peeks from the
+// folder's lower edge. Reuses the established noise-black grain + the
+// existing project photos.
+interface Props {
+  color: string;
+  lightText?: boolean;       // white tab/tag text on the darker (red/blue) folders
+  date: string;
+  title: string;
+  description: string[];   // one entry per line — matches the reference's manual breaks
+  tags: string[];
+  image: string;
+  imagePosition?: string;
+  rotate?: number;
+  class?: string;
+  href?: string;
+  interactive?: boolean;
+}
+const {
+  color, lightText = false, date, title, description, tags,
+  image, imagePosition = 'center', rotate = 0, class: className, href, interactive = false,
+} = Astro.props;
+const CardElement = href ? 'a' : 'article';
+
+// folder silhouette (tab top-left, body full width) — 558 x 426 box
+const FOLDER =
+  'M20 5 L350 5 Q367 5 369 22 L371 42 C372 56 382 55 402 55 L538 55 Q558 55 558 75 ' +
+  'L558 406 Q558 426 538 426 L20 426 Q0 426 0 406 L0 25 Q0 5 20 5 Z';
+---
+
+<CardElement href={href} tabindex={interactive && !href ? 0 : undefined} class:list={['wcard', className, interactive && 'wcard--interactive']} style={`--wc-color:${color};transform:rotate(${rotate}deg);`}>
+  <div class="wcard__folder">
+    <svg class="wcard__paper" viewBox="0 0 558 426" preserveAspectRatio="none" aria-hidden="true">
+      <path d={FOLDER} fill={color} />
+    </svg>
+    <span class="wcard__grain" style={`clip-path:path('${FOLDER}');`}></span>
+
+    <span class:list={['wcard__date', lightText && 'wcard__date--light']}>{date}</span>
+
+    <div class="wcard__photo">
+      <img src={image} alt={`${title} project`} style={`object-position:${imagePosition};`} />
+    </div>
+
+    {/* star paper-clip — exact Home asset (ProjectCard sticker1), same crop */}
+    <span class="wcard__rot wcard__rot--star">
+      <span class="wcard__crop wcard__crop--star">
+        <img src="/images/stickers/project1-sticker-a.png" alt="" aria-hidden="true" class="wcard__crop-img wcard__crop-img--star" />
+      </span>
+    </span>
+
+    {/* Static decorative tape. */}
+    <span class="wcard__rot wcard__rot--tape">
+      <img src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" class="wcard__tape-img" />
+
+    </span>
+  </div>
+
+  <h3 class="wcard__title ink-text">{title}</h3>
+  <p class="wcard__desc">{description.map((line, i) => (<>{i > 0 && <br />}{line}</>))}</p>
+  <div class="wcard__tags">
+    {tags.map((t) => (
+      <span class:list={['wcard__tag', lightText && 'wcard__tag--light']}><span class="wcard__tag-label">{t}</span></span>
+    ))}
+    {interactive && <span class="wcard__cta" aria-hidden="true"><span class="wcard__cta-text">{href ? 'View Case Study →' : 'Coming Soon'}</span></span>}
+  </div>
+</CardElement>
+
+<style>
+  .wcard {
+    position: absolute;
+    width: 558px;
+  }
+  .wcard__folder {
+    position: relative;
+    width: 558px;
+    height: 440px;
+  }
+
+  .wcard__paper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 558px;
+    height: 426px;
+    display: block;
+  }
+  .wcard__grain {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 558px;
+    height: 426px;
+    background-image: url('/images/textures/dot-grain.png');
+    background-size: 190px 127px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .wcard__date {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 366px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 1.2px;
+    color: #1e1e1e;
+  }
+  .wcard__date--light { color: #fbfbfb; }
+
+  .wcard__photo {
+    position: absolute;
+    left: 13px;
+    top: 70px;
+    width: 532px;
+    height: 343px;
+    border-radius: 9px;
+    overflow: hidden;
+  }
+  .wcard__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---- decorative doodles: same crop / asset technique as the Home
+     ProjectCard; only their placement/size/rotation follow the Works
+     reference. ---- */
+  .wcard__rot {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wcard__crop { position: relative; display: block; overflow: hidden; }
+  .wcard__crop-img { position: absolute; max-width: none; }
+  .wcard__tape-img { display: block; max-width: none; }
+
+  .wcard__rot--star {
+    left: 20px;
+    top: 46px;
+    width: 65px;
+    height: 61px;
+    transform: rotate(-16deg);
+  }
+  .wcard__crop--star { width: 54px; height: 49px; }
+  .wcard__crop-img--star { width: 84.5px; height: 63.3px; left: -16.4px; top: -9.1px; }
+
+  .wcard__rot--tape {
+    left: 489px;
+    top: 391px;
+    width: 74px;
+    height: 50px;
+    transform: rotate(-27deg);
+  }
+  .wcard__tape-img { width: 70px; height: 16.6px; }
+
+  .wcard__title {
+    margin: 20px 0 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.8;
+    letter-spacing: 1px;
+    color: #161616;
+    -webkit-text-stroke: 1px #161616;
+  }
+  .wcard__desc {
+    margin: 13px auto 0;
+    width: 470px;
+    font-family: var(--font-mono);
+    font-size: 22px;
+    line-height: 1.34;
+    letter-spacing: 0.2px;
+    color: #4a4a4a;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .wcard__tags {
+    margin-top: 16px;
+    display: flex;
+    gap: 22px;
+  }
+  .wcard__tag {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 10px;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    letter-spacing: 0.6px;
+    color: #1e1e1e;
+    background: var(--wc-color);
+    clip-path: polygon(
+      3.8% 85%, 0% 100%, 100% 100%, 95.3% 64.6%, 97.5% 33.9%,
+      93.6% 14.6%, 97.5% 0%, 3.8% 0%, 0% 19.2%, 3.8% 50%, 0% 68.5%, 3.8% 85%
+    );
+  }
+  .wcard__tag--light { color: #fbfbfb; }
+
+  .wcard--interactive .wcard__paper path { transition: fill 320ms ease; }
+  .wcard--interactive .wcard__date { transition: color 320ms ease; }
+  .wcard--interactive:is(:hover, :focus-visible) .wcard__paper path { fill: var(--color-red); }
+  .wcard--interactive:is(:hover, :focus-visible) .wcard__date { color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .wcard--interactive .wcard__paper path, .wcard--interactive .wcard__date { transition: none; } }
+
+  .wcard__tags { position: relative; }
+  .wcard__tag { transition: opacity 160ms ease 160ms; }
+  .wcard__cta {
+    position: absolute; inset: 0; isolation: isolate;
+    display: grid; place-items: center; color: #fff;
+    font: 18px var(--font-mono); letter-spacing: .6px;
+    opacity: 0; transform: scaleX(.92); pointer-events: none;
+    transition: opacity 160ms ease, transform 320ms ease;
+  }
+  .wcard__cta::before, .wcard__cta::after {
+    content: ''; position: absolute; inset: 0; clip-path: polygon(4% 0,100% 0,96% 20%,100% 35%,96% 65%,100% 100%,0 100%,4% 80%,0 65%,4% 45%,0 20%); pointer-events: none;
+  }
+  .wcard__cta::before {
+    z-index: -2; transform: translate(6px, 4px);
+    background: var(--color-ink) url('/images/textures/noise-black.png') center / 200px 200px;
+  }
+  .wcard__cta::after {
+    z-index: -1; background: linear-gradient(color-mix(in srgb, var(--color-red) 94%, transparent), color-mix(in srgb, var(--color-red) 94%, transparent)), url('/images/textures/dot-grain.png') center / 190px 127px;
+  }
+  .wcard__cta-text { opacity: 0; transition: opacity 100ms ease; }
+  .wcard--interactive:is(:hover, :focus-visible) .wcard__tag { opacity: 0; transition-delay: 0ms; }
+  .wcard--interactive:is(:hover, :focus-visible) .wcard__cta { opacity: 1; transform: scaleX(1); transition-delay: 100ms; pointer-events: auto; }
+  .wcard--interactive:is(:hover, :focus-visible) .wcard__cta-text { opacity: 1; transition-delay: 220ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .wcard__tag, .wcard__cta, .wcard__cta-text { transition: none !important; }
+  }
+</style>

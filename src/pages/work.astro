@@ -1,0 +1,158 @@
+---
+// Desktop "Final Work" page (Figma node 206:438), built against
+// Referance/Final work.png. Reuses Nav, SectionHeading (Featured Works
+// treatment) and the ticket Footer; the folder cards are a Works-specific
+// component. Project photos are the exact assets from the Landing page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import WorkCard from '../components/WorkCard.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    class: 'work-page__card--oni',
+    color: '#8fe591',
+    date: 'Mar 2026',
+    title: 'ONI CARES',
+    href: '/work/oni-cares',
+    description: ['An AI-powered care platform', 'connecting doctors, care', 'teams, and expecting mothers.'],
+    tags: ['Healthcare UX', 'Clinical app'],
+    image: '/images/photos/project1-oni-cares-devices.jpg',
+    imagePosition: 'center 32%',
+    rotate: 0,
+  },
+  {
+    class: 'work-page__card--fic',
+    color: '#f8d3ab',
+    date: 'May 2026',
+    title: 'FIC NON-FIC',
+    href: '/work/fic-non-fic',
+    description: ['A reading app for finding your', 'next book, your kind of people,', 'and your kind of stories.'],
+    tags: ['Healthcare UX', 'Clinical app'],
+    image: '/images/photos/project2-ficnonfic-phone.jpg',
+    imagePosition: 'center 30%',
+    rotate: 0,
+  },
+  {
+    class: 'work-page__card--bcl',
+    color: '#be4f52',
+    lightText: true,
+    date: 'Mar 2025',
+    title: 'BCL',
+    href: '/work/bcl',
+    description: ['An AI-powered career coach', 'helping people set goals, build', 'habits, and grow with intention.'],
+    tags: ['AI Life Coach', 'B2B SAAS'],
+    image: '/images/photos/project3-bcl-macbook.jpg',
+    imagePosition: 'center',
+    rotate: 0,
+  },
+  {
+    class: 'work-page__card--hap',
+    color: '#75b9e0',
+    lightText: true,
+    date: 'Oct 2025',
+    title: 'HAPELLO',
+    description: [
+      'A D2C sustainability brand creating',
+      'thoughtful, eco-conscious sanitary',
+      'products for everyday care.',
+    ],
+    tags: ['D2C E-commerce', 'Website'],
+    // NOTE: no dedicated Hapello photo exists in public/images/ — stand-in only.
+    image: '/images/photos/project2-ficnonfic-phone.jpg',
+    imagePosition: 'center 55%',
+    rotate: 0,
+  },
+];
+---
+
+<BaseLayout title="Works — Maryamul Aasia" description="A few things I've designed, shipped, and learned from along the way.">
+  <div class="work-page">
+    <div class="work-page__grain" aria-hidden="true"></div>
+
+    <Nav current="works" />
+
+    <SectionHeading
+      class="work-page__heading"
+      width={471}
+      height={199.148}
+      back={{ src: '/images/stickers/featured-tag-front.svg', left: 6, top: 7.39, w: 474, h: 183 }}
+      front={{ src: '/images/stickers/featured-tag-back.png', left: 0, top: 1, w: 476, h: 183 }}
+      word1={{ text: 'Featured', left: 187.97, top: 1.51, w: 298.066, h: 140.197 }}
+      word2={{ text: 'Works', left: 363.37, top: 76.23, w: 210.719, h: 123.684 }}
+    />
+    <p class="work-page__tagline">A few things I’ve designed, shipped, <br />and learned from along the way.</p>
+
+    {projects.map((p) => (
+      <WorkCard
+        interactive
+        class={p.class}
+        color={p.color}
+        lightText={p.lightText}
+        date={p.date}
+        title={p.title}
+        href={p.href}
+        description={p.description}
+        tags={p.tags}
+        image={p.image}
+        imagePosition={p.imagePosition}
+        rotate={p.rotate}
+      />
+    ))}
+
+    <Footer top={2101} />
+  </div>
+</BaseLayout>
+
+<style>
+  .work-page {
+    position: relative;
+    width: var(--canvas-width);
+    height: 2669px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+  .work-page__grain {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/paper-grain.png');
+    background-size: 307.2px 204.8px;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  :global(.work-page__heading.section-heading) {
+    position: absolute;
+    left: calc(50% - 4px);
+    top: 156px;
+    transform: translateX(-50%);
+  }
+
+  .work-page__tagline {
+    position: absolute;
+    left: 50%;
+    top: 428px;
+    width: 520px;
+    transform: translateX(-50%) rotate(-0.6deg);
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: 1.34;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  :global(.work-page__card--oni) { left: 158px; top: 551px; }
+  :global(.work-page__card--fic) { left: 738px; top: 551px; }
+  /* BCL + HAPELLO share one top; identical folder height in the component
+     means identical folder bottom + washi-tape line. Both descriptions are
+     now three lines at the same type size, so the cards end level too. */
+  :global(.work-page__card--bcl) { left: 158px; top: 1304px; }
+  :global(.work-page__card--hap) { left: 738px; top: 1304px; }
+
+  /* Works reference nudges the About link a touch further right so Home /
+     Works / About read as an evenly spaced group. Scoped to this page. */
+  .work-page :global(a.nav__link[href='/about']) { left: 452px !important; }
+</style>

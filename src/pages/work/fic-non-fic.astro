@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import PhotoMount from '../../components/oni/PhotoMount.astro';
+import NoteGrid from '../../components/oni/NoteGrid.astro';
+import InsightNotes from '../../components/oni/InsightNotes.astro';
+import '../../styles/fic-non-fic.css';
+
+const assets = '/images/fic nonfic/';
+const problems = [
+  { title: 'Scattered reading journeys', text: 'Discovery, borrowing, tracking, and\ncommunity span separate platforms.' },
+  { title: 'Disconnected library experience', text: 'Finding and accessing books isn’t\nconnected to the reading journey.' },
+  { title: 'Limited community continuity', text: 'Reading progress and discussions remain separate experiences.' },
+];
+const roles = [
+  { title: 'UX & Research', text: 'Conducted competitive analysis and\nlightweight UX research.' },
+  { title: 'Product Design', text: 'Designed user flows and high-\nfidelity UI for new features.' },
+  { title: 'Mobile-First', text: 'Advocated for a mobile-first\nexperience based on user behaviour.' },
+  { title: 'Design Systems', text: 'Extended the product using the existing\nstyle guide and design system.' },
+];
+const insights = [
+  { title: 'Discovery\nwas\nfragmented', text: '' },
+  { title: 'Borrowing\nlacked\ncontext', text: '' },
+  { title: 'Communities\nfelt\ndisconnected', text: '' },
+  { title: 'Mobile was\nthe primary\ntouchpoint', text: '' },
+];
+const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
+---
+
+<BaseLayout title="FIC NON-FIC — Maryamul Aasia" description="Designing a connected reading ecosystem for modern readers.">
+  <div class="fic-page">
+    <main class="fic-art">
+      <section class="fic-hero" aria-labelledby="fic-title">
+        <img class="fic-hero-device" src={`${assets}hero.png`} width="1117" height="1092" alt="Fic Non-Fic reading app displayed on a phone" />
+        <h1 id="fic-title" class="fic-title"><span class="fic-backed"><b class="fic-paper"><span class="ink-text">FIC</span></b></span><span class="fic-backed"><b class="fic-paper"><span class="ink-text">NON-FIC</span></b></span></h1>
+        <div class="fic-hero-label"><span class="fic-label-backing" aria-hidden="true"></span><span class="fic-label-paper" aria-hidden="true"></span><p>UI/ Product Design<br />Consumer App</p></div>
+        <div class="fic-facts fic-backed"><div class="fic-paper">
+          <p>Community library app to borrow, meet &amp; read</p>
+          <dl>{[['Product', 'Fic\nNon-fic'], ['Domain', 'Community\napp'], ['Platform', 'Mobile\nApp'], ['Role', 'UI UX\nDesigner']].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+        </div></div>
+      </section>
+      <section class="fic-about" aria-labelledby="fic-about-heading">
+        <h2 id="fic-about-heading" class="ink-text">ABOUT FIC NON FIC</h2>
+        <div class="fic-about-row">
+          <div class="fic-about-copy"><h3>Designing a Connected Reading<br />Ecosystem for Modern Readers</h3>
+            <p>FicNonFic is a nonprofit platform helping communities discover, borrow, and enjoy books through libraries and reading communities. Starting with Read, Borrow &amp; Meet, I expanded the product into mobile-first journeys within the existing design system.</p>
+            <p>Reading journeys are fragmented, with discovery, borrowing, and connections happening across platforms. FicNonFic brings them together in one place.</p>
+          </div>
+          <div class="fic-about-photo"><PhotoMount src={`${assets}about.png`} alt="A reader browsing a curved library filled with books" color="#e4ddff" /></div>
+        </div>
+      </section>
+      <section class="fic-problem" aria-labelledby="fic-problem-heading">
+        <h2 id="fic-problem-heading" class="ink-text">PROBLEM STATEMENT</h2>
+        <div class="fic-copy"><p>Readers often switch between multiple platforms to discover, borrow, track, and discuss books, creating a fragmented reading experience.</p><p><strong>Fragmented journeys → repeated effort, disconnected experiences, and limited reading continuity.</strong></p></div>
+        <div class="fic-problem-notes"><NoteGrid items={problems} color="#efdcff" /></div>
+        <blockquote class="fic-quote fic-graph"><p>“I can find books anywhere. What’s missing is one place<br />to find the right book, borrow it, and find people who<br />want to read it with me.”</p><cite>— User Insight</cite><span class="fic-sticker fic-sticker--list" aria-hidden="true"></span><span class="fic-sticker fic-sticker--chat" aria-hidden="true"></span></blockquote>
+      </section>
+      <section class="fic-role" aria-labelledby="fic-role-heading">
+        <h2 id="fic-role-heading" class="ink-text">MY ROLE</h2>
+        <p class="fic-copy">I expanded the existing Read, Borrow &amp; Meet experience through research, mobile-first flows, and new high-fidelity features.</p>
+        <div class="fic-role-notes"><NoteGrid items={roles} /></div>
+        <div class="fic-ribbons"><span>USER-CENTRED<br />THINKING</span><span>COLLABORATION</span><span>PROBLEM SOLVING</span></div>
+      </section>
+      <section class="fic-goals" aria-labelledby="fic-goals-heading">
+        <h2 id="fic-goals-heading" class="ink-text">GOALS</h2>
+        <div class="fic-copy"><p>The goal was to create a connected, mobile-first reading experience<br />that brings discovery, borrowing, reading, and community into one<br />journey.</p><p>I simplified key flows, expanded the product beyond Read, Borrow &amp; Meet, and extended the existing design system across new features.</p></div>
+      </section>
+      <section class="fic-research" aria-labelledby="fic-research-heading">
+        <h2 id="fic-research-heading" class="ink-text">RESEARCH</h2>
+        <div class="fic-copy"><p>We conducted lightweight UX research and competitive analysis across reading, library, community, bookstore, and event platforms to understand how readers discover, borrow, track, and engage around books.</p><p><strong>Reading journeys felt fragmented, with functional but disconnected library experiences. Community discovery rarely reflected readers’ interests.</strong></p></div>
+        <h3>Research Insights</h3><div class="fic-insights"><InsightNotes items={insights} /></div>
+      </section>
+      <section class="fic-competition" aria-labelledby="fic-competition-heading">
+        <h2 id="fic-competition-heading" class="ink-text">COMPETITIVE LANDSCAPE</h2>
+        <p class="fic-copy">I analyzed reading, library, bookstore, and community platforms to uncover patterns, gaps, and opportunities for FICNONFIC.</p>
+        <img class="fic-wide-image" src={`${assets}ficnonfic-competitive-analysis 1.png`} width="2538" height="1600" alt="Competitive analysis of reading and tracking, book clubs, bookstores, libraries, and events, comparing patterns, gaps, and opportunities" />
+      </section>
+      <section class="fic-direction" aria-labelledby="fic-direction-heading">
+        <h2 id="fic-direction-heading" class="ink-text">RESEARCH CHANGED THE DIRECTION</h2>
+        <p class="fic-copy">Designed for the way readers actually use the product, one hand, on the go, and in short browsing sessions. - research insight</p>
+        <div class="fic-direction-cards">
+          <div class="fic-graph fic-direction-card"><h3>CLIENT BRIEF</h3><p>Web application</p><img class="fic-corner-tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" /></div>
+          <span class="fic-direction-arrow" aria-hidden="true">⟶</span>
+          <div class="fic-graph fic-direction-card fic-direction-card--insight"><h3>RESEARCH INSIGHT</h3><p>97% mobile usage<br />among 15 to 29 year olds</p><small>(Press Information Bureau GOI 2025)</small><img class="fic-top-tape" src="/images/stickers/stamp-tape.svg" alt="" aria-hidden="true" /></div>
+          <span class="fic-direction-arrow" aria-hidden="true">⟶</span>
+          <div class="fic-graph fic-direction-card fic-direction-card--decision"><h3>DESIGN DECISION</h3><p>Mobile-first<br />experience</p><img class="fic-corner-tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" /></div>
+        </div>
+      </section>
+      <section class="fic-architecture" aria-labelledby="fic-architecture-heading">
+        <h2 id="fic-architecture-heading" class="ink-text">INFORMATION ARCHITECTURE</h2>
+        <img class="fic-wide-image" src={`${assets}ficnonfic-ia 1.png`} width="2564" height="1246" alt="Fic Non-Fic information architecture: onboarding and preferences, then Borrow, Meet, Read, and Profile with their associated features" />
+      </section>
+      <section class="fic-visual" aria-labelledby="fic-visual-heading">
+        <h2 id="fic-visual-heading" class="ink-text">VISUAL DIRECTION</h2>
+        <p class="fic-copy">Royal Purple, Outfit, and glass morphism create a clear, approachable, and distinctive reading experience.</p>
+        <div class="fic-swatches">{colors.map((color,i) => <div class="fic-backed" style={`--paper:${color}`}><div class:list={['fic-paper', { 'fic-swatch-light-text': i === 0 || i === 3 }]}><span>{color}</span></div></div>)}</div>
+        <div class="fic-specimen" aria-label="Outfit typography specimen">
+          <div class="fic-specimen-copy"><div class="fic-weights"><strong class="ink-text">Outfit</strong><span class="ink-text">Bold</span><span class="ink-text">Regular</span><span class="ink-text">Light</span></div><p class="ink-text">Aa Bb Cc Dd Ee Ff Hh Ii Jj<br />Kk Ll Mm Nn Oo Pp Qq Rr<br />Ss Tt Uu Vv Ww Xx Yy Zz</p></div><span class="fic-specimen-aa ink-text">Aa</span>
+        </div>
+      </section>
+      <section class="fic-ui" aria-labelledby="fic-ui-heading">
+        <h2 id="fic-ui-heading" class="ink-text">UI DESIGNS</h2>
+        <h3 id="fic-home-heading">Home Screen</h3>
+        <div class="fic-copy"><p>The home screen combines featured banners with borrow/lend request updates, Fiction/Non-Fiction filters, and newly added books.</p><p>Glass morphism creates a distinctive, layered identity while keeping the experience lightweight and content-focused.</p></div>
+        <img class="fic-home-screen" src={`${assets}Home screen.png`} width="1234" height="2545" alt="Home screen with library banner, genre filters, newly added books, and reading navigation" />
+        <h3 id="fic-read-heading">Read &amp; Meet Screens</h3>
+        <div class="fic-copy"><p>The Meet screen combines book clubs, events, challenges, and community activities to help readers connect around books.</p><p>The Read screen combines book discovery, reading progress, challenges, and activities to keep readers engaged throughout their journey.</p></div>
+        <img class="fic-read-screens" src={`${assets}reed and meet.png`} width="1262" height="1273" alt="Meet screen with book clubs and events alongside Read screen with reading progress, challenges, and the to-be-read shelf" />
+        <h3 id="fic-other-heading">Other Screens</h3>
+        <img class="fic-other-screens" src={`${assets}other.png`} width="1907" height="1274" alt="Book details and borrowing, adding reading progress, and reader profile screens" />
+      </section>
+      <section class="fic-impact" aria-labelledby="fic-impact-heading">
+        <h2 id="fic-impact-heading" class="ink-text">IMPACT</h2>
+        <p class="fic-copy">How the design expanded and strengthened the overall product experience.</p>
+        <div class="fic-impact-cards">
+          <div class="fic-backed"><article class="fic-paper"><h3>From Web-First to Mobile-First</h3><p>Shifted the web concept into a mobile-first experience built around reader behaviour.</p></article></div>
+          <div class="fic-backed"><article class="fic-paper"><h3>Beyond Read, Borrow &amp; Meet</h3><p>Expanded 3 core areas into a connected reading and community ecosystem.</p></article></div>
+        </div>
+      </section>
+      <section class="fic-more" aria-labelledby="fic-more-heading">
+        <h2 id="fic-more-heading" class="fic-more-heading"><span class="fic-backed"><b class="fic-paper"><span class="ink-text">MORE</span></b></span><span class="fic-backed"><b class="fic-paper"><span class="ink-text">WORKS</span></b></span></h2>
+        <div class="fic-more-cards">
+          <div class="fic-more-card"><WorkCard color="#be4f52" lightText date="Mar 2025" title="BCL" href="/work/bcl" description={['An AI-powered career coach', 'helping people set goals, build', 'habits, and grow with intention.']} tags={['AI Life Coach', 'B2B SAAS']} image="/images/photos/project3-bcl-macbook.jpg" imagePosition="center" /></div>
+          <div class="fic-more-card"><WorkCard color="#8fe591" date="Mar 2026" title="ONI CARES" description={['An AI-powered care platform', 'connecting doctors, care', 'teams, and expecting mothers.']} tags={['Healthcare UX', 'Clinical app']} image="/images/photos/project1-oni-cares-devices.jpg" imagePosition="center 32%" href="/work/oni-cares" /></div>
+        </div>
+      </section>
+    </main>
+    <Nav current="works" />
+    <Footer top={0} />
+  </div>
+</BaseLayout>

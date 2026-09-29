@@ -1,0 +1,23 @@
+---
+interface Props { items: { title: string; text: string }[] }
+const { items } = Astro.props;
+---
+<div class="insights">
+  {items.map(item => <article class="insight">
+    <img class="paper" src="/images/stickers/stamp-texture.png" alt="" aria-hidden="true" />
+    <img class="tape tape--a" src="/images/stickers/stamp-tape.svg" alt="" aria-hidden="true" />
+    <h4>{item.title}</h4><p>{item.text}</p>
+    <img class="tape tape--b" src="/images/stickers/stamp-tape.svg" alt="" aria-hidden="true" />
+  </article>)}
+</div>
+<style>
+  .insights { display:grid; grid-template-columns:repeat(4,1fr); gap:29px; }
+  .insight { position:relative; height:162px; padding:23px 18px 10px; text-align:center; }
+  .paper { position:absolute; left:-34px; top:-29px; width:calc(100% + 65px); height:216px; filter:drop-shadow(0 1px 4px #0003); }
+  h4,p { position:relative; color:#121212; font-family:var(--font-sans); }
+  h4 { font-size:23px; font-weight:400; line-height:1.16; margin:0 0 8px; white-space:pre-line; }
+  p { font-size:17px; line-height:1.2; }
+  .tape { position:absolute; width:72px; height:31px; z-index:1; filter:hue-rotate(310deg); }
+  .tape--a { top:-5px; left:-15px; transform:rotate(-28deg); }
+  .tape--b { right:-11px; bottom:-4px; transform:rotate(-28deg); }
+</style>

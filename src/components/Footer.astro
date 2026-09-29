@@ -1,0 +1,169 @@
+---
+// `top` lets the footer be reused on pages other than the Landing page's
+// tall canvas — defaults to Landing's own position so Landing is
+// unaffected unless a page explicitly passes a different offset.
+interface Props {
+  top?: number;
+}
+const { top = 5047 } = Astro.props;
+
+const socials = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maryamul-aasia/' },
+  { label: 'Behance', href: 'https://www.behance.net/maryamulaasia1' },
+  { label: 'Instagram', href: 'https://www.instagram.com/aasia_design?stkn=MW5wc2lndzViaWtlMw==' },
+  { label: 'E-Mail', href: 'mailto:maryamulaasia@gmail.com' },
+];
+---
+
+<footer class="footer" id="footer" style={`top:${top}px;`}>
+  <img src="/images/stickers/ticket-bg-shadow.svg" alt="" aria-hidden="true" class="footer__bg footer__bg--shadow" />
+  <img src="/images/stickers/ticket-bg-front.png" alt="" aria-hidden="true" class="footer__bg footer__bg--front" />
+
+  <p class="footer__heading footer__heading--left ink-text">Your next designer</p>
+  <p class="footer__heading footer__heading--right ink-text">Lets Connect</p>
+
+  <div class="footer__identity">
+    <p class="footer__name ink-text">Maryamul Aasia</p>
+    <p class="footer__role ink-text">Product / UI UX Designer</p>
+  </div>
+
+  <div class="footer__status">
+    <p class="ink-text">Status: OPEN TO OPPORTUNITIES</p>
+    <p class="ink-text">Admit one: GOOD IDEAS</p>
+    <p class="ink-text">Ticket no: MA -2026</p>
+  </div>
+
+  <p class="footer__chapter ink-text">Open for the <br />next chapter</p>
+
+  <ul class="footer__socials">
+    {socials.map((s) => (
+      <li>
+        <a href={s.href} target="_blank" rel="noopener noreferrer">
+          <span class="ink-text">{s.label}</span>
+          <img src="/images/icons/export.svg" alt="" aria-hidden="true" />
+        </a>
+      </li>
+    ))}
+  </ul>
+</footer>
+
+<style>
+  .footer {
+    position: absolute;
+    left: 79px;
+    width: 1280px;
+    height: 479px;
+  }
+  .footer__bg {
+    position: absolute;
+    max-width: none;
+    transform: scaleX(-1);
+  }
+  .footer__bg--shadow {
+    left: -1px;
+    top: 15px;
+    width: 1292px;
+    height: 479px;
+  }
+  .footer__bg--front {
+    left: 0;
+    top: 0;
+    width: 1280px;
+    height: 479px;
+  }
+
+  .footer__heading {
+    position: absolute;
+    top: 48px;
+    font-family: var(--font-typewriter);
+    font-weight: 400;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+  .footer__heading--left {
+    left: calc(50% - 355px);
+    transform: translateX(-50%);
+    font-size: 36px;
+  }
+  .footer__heading--right {
+    left: calc(50% + 431px);
+    transform: translateX(-50%);
+    font-size: 32px;
+    letter-spacing: 0.64px;
+  }
+
+  .footer__identity {
+    position: absolute;
+    left: 108px;
+    top: 140px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--font-typewriter);
+  }
+  .footer__name {
+    font-size: 46px;
+    letter-spacing: 0.92px;
+    color: var(--color-ink);
+  }
+  .footer__role {
+    font-size: 32px;
+    letter-spacing: 0.64px;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .footer__status {
+    position: absolute;
+    left: 106px;
+    top: 303px;
+    width: 429px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-family: var(--font-typewriter);
+    font-size: 26px;
+    letter-spacing: 0.52px;
+    color: var(--color-text);
+  }
+
+  .footer__chapter {
+    position: absolute;
+    left: 987px;
+    top: 379px;
+    font-family: var(--font-typewriter);
+    font-size: 26px;
+    letter-spacing: 0.52px;
+    line-height: normal;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .footer__socials {
+    position: absolute;
+    left: 975px;
+    top: 141px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer__socials a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-typewriter);
+    font-size: 26px;
+    letter-spacing: 0.52px;
+    color: var(--color-text);
+  }
+  .footer__socials img {
+    width: 24px;
+    height: 24px;
+  }
+</style>

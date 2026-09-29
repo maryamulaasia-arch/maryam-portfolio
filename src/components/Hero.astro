@@ -1,0 +1,377 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section class="hero" aria-label="Introduction">
+  <div class="hero__bg" aria-hidden="true"></div>
+
+  <SectionHeading
+    class="hero__name"
+    width={471}
+    height={199.148}
+    front={{ src: '/images/stickers/name-tag-front.png', left: 0, top: 1, w: 463, h: 183 }}
+    back={{ src: '/images/stickers/name-tag-back.svg', left: 8, top: 10, w: 463, h: 183 }}
+    word1={{ text: 'MARYAMUL', left: 187.97, top: 0, w: 331.932, h: 143.214 }}
+    word2={{ text: 'Aasia', left: 363.38, top: 77, w: 174.751, h: 122.148 }}
+  />
+
+  <div class="hero__side-graph" aria-hidden="true">
+    <div class="hero__side-graph-inner">
+      <span class="hero__rot hero__rot--sgf-back">
+        <img src="/images/stickers/side-graph-frame-back.svg" alt="" class="hero__sgf hero__sgf--back" />
+      </span>
+      <span class="hero__rot hero__rot--sgf-front">
+        <img src="/images/stickers/side-graph-frame-front.png" alt="" class="hero__sgf hero__sgf--front" />
+      </span>
+      <span class="hero__rot hero__rot--tape-1">
+        <span class="hero__crop hero__crop--tape-1"><img src="/images/stickers/tape-scrap.png" alt="" class="hero__crop-img hero__crop-img--tape-1" /></span>
+      </span>
+      <span class="hero__rot hero__rot--tape-2">
+        <span class="hero__crop hero__crop--tape-2"><img src="/images/stickers/tape-scrap.png" alt="" class="hero__crop-img hero__crop-img--tape-2" /></span>
+      </span>
+      <span class="hero__rot hero__rot--tape-3">
+        <span class="hero__crop hero__crop--tape-3"><img src="/images/stickers/tape-scrap.png" alt="" class="hero__crop-img hero__crop-img--tape-3" /></span>
+      </span>
+      <span class="hero__rot hero__rot--tape-4">
+        <span class="hero__crop hero__crop--tape-4"><img src="/images/stickers/tape-scrap.png" alt="" class="hero__crop-img hero__crop-img--tape-4" /></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="hero__photo">
+    <img src="/images/photos/hero-photo-shadow.png" alt="" aria-hidden="true" class="hero__photo-img hero__photo-img--shadow" />
+    <img src="/images/photos/hero-photo.png" alt="Maryamul Aasia, product designer" class="hero__photo-img hero__photo-img--main" />
+  </div>
+
+  <div class="hero__torn-edge" aria-hidden="true">
+    <img src="/images/textures/torn-paper-edge.png" alt="" class="hero__torn-edge-img" />
+  </div>
+
+  <div class="hero__cta-wrap">
+    <span class="hero__cta-shadow" aria-hidden="true"></span>
+    <a href="https://drive.google.com/file/d/189A-5MdUjLbZI9KNOZNeZU4gDzRKtX5c/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="hero__cta">
+      <span class="hero__cta-fill" aria-hidden="true"></span>
+      <span class="hero__cta-texture" aria-hidden="true"></span>
+      <span class="hero__cta-label">View Resume</span>
+      <img src="/images/icons/arrow-right.svg" alt="" aria-hidden="true" class="hero__cta-arrow" />
+    </a>
+    <img src="/images/icons/underline-cta.svg" alt="" aria-hidden="true" class="hero__cta-underline" />
+  </div>
+
+  <div class="hero__info-card">
+    <span class="hero__info-shadow" aria-hidden="true"></span>
+    <div class="hero__info-body">
+      <span class="hero__info-texture" aria-hidden="true"></span>
+      <p class="hero__info-row hero__info-row--tagline">Crafting digital experiences that feels effortless</p>
+      <p class="hero__info-row hero__info-row--role">Product designer / UI UX Designer</p>
+      <p class="hero__info-row hero__info-row--note">Freelance designer,  open to full - time opportunities.</p>
+    </div>
+  </div>
+
+  <div class="hero__bubble">
+    <div class="hero__bubble-inner">
+      <img src="/images/stickers/speech-bubble-back.svg" alt="" class="hero__bubble-art hero__bubble-art--back" />
+      <img src="/images/stickers/speech-bubble-front.png" alt="" class="hero__bubble-art hero__bubble-art--front" />
+      <span class="hero__rot hero__rot--bubble-a"><span class="hero__bubble-word">Human first</span></span>
+      <span class="hero__rot hero__rot--bubble-b"><span class="hero__bubble-word">Designer</span></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: absolute;
+    left: -122px;
+    top: 94px;
+    width: 1707px;
+    height: 923px;
+  }
+
+  .hero__bg {
+    position: absolute;
+    left: 84px;
+    top: -215px;
+    width: 1531px;
+    height: 1188px;
+    background-color: var(--color-hero-teal);
+    background-image: url('/images/textures/hero-bg-pattern.png');
+    background-size: 819.2px 546.8px;
+    background-position: top left;
+  }
+
+  :global(.hero__name.section-heading) {
+    position: absolute;
+    left: calc(50% + 4px);
+    top: 11px;
+    transform: translateX(-50%);
+  }
+
+  /* ---- Side graph doodle cluster ---- */
+  .hero__side-graph {
+    position: absolute;
+    left: 291.91px;
+    top: 2px;
+    width: 795.279px;
+    height: 792.531px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero__side-graph-inner {
+    position: relative;
+    width: 599.364px;
+    height: 593.614px;
+    overflow: hidden;
+    transform: rotate(25.24deg);
+  }
+  .hero__rot {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero__rot--sgf-back { left: 26.99px; top: 22.51px; width: 572.374px; height: 571.105px; transform: rotate(-44.49deg); }
+  .hero__rot--sgf-front { left: 0; top: 0; width: 567.396px; height: 566.215px; transform: rotate(-44.49deg); }
+  .hero__rot--tape-1 { left: 226.09px; top: 215.77px; width: 99.152px; height: 101.274px; transform: rotate(-48.58deg); }
+  .hero__rot--tape-2 { left: 166.16px; top: 182.28px; width: 88.13px; height: 84.409px; transform: rotate(3.86deg); }
+  .hero__rot--tape-3 { left: 125.39px; top: 262.31px; width: 88.13px; height: 84.409px; transform: rotate(3.86deg); }
+  .hero__rot--tape-4 { left: 186.76px; top: 323.55px; width: 105.896px; height: 109.72px; transform: rotate(-25.24deg); }
+
+  .hero__sgf { display: block; }
+  .hero__sgf--back { width: 454.62px; height: 353.973px; }
+  .hero__sgf--front { width: 447.643px; height: 353.973px; }
+
+  /* Each "tape" doodle is a small cropped window onto one icon in a large
+     sticker-sheet image (tape-scrap.png), not the whole sheet. */
+  .hero__crop { position: relative; display: block; overflow: hidden; }
+  .hero__crop-img { position: absolute; max-width: none; }
+  .hero__crop--tape-1 { width: 83px; height: 59px; }
+  .hero__crop-img--tape-1 { width: 558px; height: 447px; left: -457px; top: -283px; }
+  .hero__crop--tape-2 { width: 83px; height: 79px; }
+  .hero__crop-img--tape-2 { width: 558px; height: 447px; left: -468.2px; top: -109.2px; }
+  .hero__crop--tape-3 { width: 83px; height: 79px; }
+  .hero__crop-img--tape-3 { width: 558px; height: 447px; left: -366.2px; top: -257.9px; }
+  .hero__crop--tape-4 { width: 77px; height: 85px; }
+  .hero__crop-img--tape-4 { width: 558px; height: 447px; left: -286.8px; top: -264.7px; }
+
+  /* ---- Hero photo ---- */
+  .hero__photo {
+    position: absolute;
+    left: 544px;
+    top: 16px;
+    width: 637px;
+    height: 794px;
+    overflow: hidden;
+  }
+  .hero__photo-img {
+    position: absolute;
+    left: 50%;
+    width: 619px;
+    height: 774px;
+    object-fit: cover;
+  }
+  .hero__photo-img--shadow {
+    top: 20px;
+    transform: translateX(calc(-50% + 9px));
+    object-position: bottom;
+    mix-blend-mode: multiply;
+  }
+  .hero__photo-img--main {
+    top: 0;
+    transform: translateX(calc(-50% - 9px));
+  }
+
+  /* ---- Torn paper edge ---- */
+  .hero__torn-edge {
+    position: absolute;
+    left: 50%;
+    top: 662px;
+    width: 1611px;
+    height: 454px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero__torn-edge-img {
+    position: absolute;
+    left: -64.1px;
+    top: -286.9px;
+    width: 1790px;
+    height: 1049.7px;
+    max-width: none;
+  }
+
+  /* ---- CTA ---- */
+  .hero__cta-wrap {
+    position: absolute;
+    left: 691px;
+    top: 836px;
+    width: 330px;
+    height: 90px;
+  }
+  .hero__cta-shadow {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 330px;
+    height: 83px;
+    border-radius: 60px;
+    background: var(--color-ink);
+  }
+  .hero__cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 330px;
+    height: 80px;
+    padding: 0 24px;
+    border: 2px solid var(--color-ink);
+    border-radius: 50px;
+    overflow: hidden;
+  }
+  .hero__cta-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--color-red);
+  }
+  .hero__cta-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/dot-grain.png');
+    background-size: 204.8px 136.55px;
+    background-position: top left;
+    opacity: 0.1;
+  }
+  .hero__cta-label {
+    position: relative;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 36px;
+    color: var(--color-white);
+    white-space: nowrap;
+  }
+  .hero__cta-arrow {
+    position: relative;
+    width: 28px;
+    height: 28px;
+  }
+  .hero__cta-underline {
+    position: absolute;
+    left: calc(50% - 7.5px);
+    top: 60px;
+    width: 196px;
+    height: 5px;
+    transform: translateX(-50%);
+  }
+
+  /* ---- Info card ---- */
+  .hero__info-card {
+    position: absolute;
+    left: 501px;
+    top: 585px;
+    width: 716px;
+    height: 172px;
+  }
+  .hero__info-shadow {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 706px;
+    height: 172px;
+    background: var(--color-ink);
+  }
+  .hero__info-body {
+    position: relative;
+    left: 0;
+    width: 706px;
+    height: 172px;
+    border: 1.332px solid var(--color-ink);
+    filter: drop-shadow(0 0 9.991px rgba(0, 0, 0, 0.3));
+    background: #fbd3a9;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  /* subtle aged-paper grunge on the peach card only — the tan paper-grain
+     asset multiplied lightly over the peach so the fill still reads clearly.
+     Sits under the text/dividers, never over them. */
+  .hero__info-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/dot-grain-tan.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero__info-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    color: var(--color-ink);
+    white-space: pre;
+  }
+  .hero__info-row--tagline {
+    height: 38.63px;
+    font-size: 18px;
+    letter-spacing: 0.9px;
+    border-bottom: 1.332px solid var(--color-ink);
+  }
+  .hero__info-row--role {
+    height: 82.589px;
+    font-size: 32px;
+    letter-spacing: 0.64px;
+    border-bottom: 1.332px solid var(--color-ink);
+  }
+  .hero__info-row--note {
+    height: 50.781px;
+    font-size: 18px;
+    letter-spacing: 0.9px;
+  }
+
+  /* ---- Speech bubble ---- */
+  .hero__bubble {
+    position: absolute;
+    left: 968px;
+    top: 172px;
+    width: 269.277px;
+    height: 267.485px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero__bubble-inner {
+    position: relative;
+    width: 203px;
+    height: 177px;
+    overflow: hidden;
+    transform: rotate(42.21deg);
+  }
+  .hero__bubble-art {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 198px;
+    height: 167.33px;
+    max-width: none;
+  }
+  .hero__bubble-art--back { left: 5px; top: 7px; }
+
+  .hero__rot--bubble-a { left: 19.98px; top: 37.36px; width: 161.993px; height: 60.424px; transform: rotate(-10.87deg); }
+  .hero__rot--bubble-b { left: 38.181px; top: 70.75px; width: 119.738px; height: 51.984px; transform: rotate(-10.69deg); }
+  .hero__bubble-word {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+</style>

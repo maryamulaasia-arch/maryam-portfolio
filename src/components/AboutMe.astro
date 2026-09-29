@@ -1,0 +1,242 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const clientPills = [
+  { label: 'BCL', left: 658, top: 859 },
+  { label: 'Hapello', left: 831, top: 859 },
+  { label: 'Oni Cares', left: 1004, top: 859 },
+  { label: 'Fic Non-fic', left: 658, top: 927 },
+  { label: 'Anchae', left: 831, top: 927 },
+];
+---
+
+<section class="about" aria-label="About me">
+  <SectionHeading
+    class="about__heading"
+    width={295}
+    height={199}
+    back={{ src: '/images/stickers/about-tag-front.svg', left: 5, top: 19.5, w: 288, h: 162.5 }}
+    front={{ src: '/images/stickers/about-tag-back.png', left: 0, top: 14.5, w: 288, h: 162.5 }}
+    word1={{ text: 'About', left: 101.47, top: 5.95, w: 199.457, h: 131.41 }}
+    word2={{ text: 'me', left: 232.91, top: 75, w: 91.827, h: 118.607 }}
+  />
+
+  <p class="about__tagline">The Designer, Reader, and Curious mind <br />behind the work.</p>
+
+  <div class="about__collage">
+  <div class="about__photo" aria-hidden="true">
+    <span class="about__photo-shadow"></span>
+    <span class="about__photo-mask">
+      <img src="/images/illustrations/about-portrait-lineart.png" alt="" />
+    </span>
+  </div>
+
+  <div class="about__bubble" aria-hidden="true">
+    <img src="/images/stickers/about-speech-shape-front.svg" alt="" class="about__bubble-art" />
+    <img src="/images/stickers/about-speech-shape-back.svg" alt="" class="about__bubble-art about__bubble-art--back" />
+  </div>
+  <p class="about__intro about__intro--1">Hi, I’m Maryam 👋 I’m a product designer who loves turning messy problems into simple, useful experiences.</p>
+  <p class="about__intro about__intro--2">I design digital products with curiosity, clarity, and a human touch.</p>
+
+  <div class="about__mail" aria-hidden="true">
+    <img src="/images/stickers/mail-shape-front.svg" alt="" class="about__mail-art about__mail-art--shadow" />
+    <img src="/images/stickers/mail-shape-back.png" alt="" class="about__mail-art about__mail-art--visible" />
+  </div>
+  <p class="about__hello">Good thigs starts from hello!</p>
+  <a href="mailto:maryamulaasia@gmail.com" class="about__email">maryamulaasia@gmail.com</a>
+
+  <div class="about__clients">
+    <img src="/images/stickers/client-card-front.svg" alt="" class="about__clients-art about__clients-art--shadow" aria-hidden="true" />
+    <img src="/images/stickers/client-card-back.svg" alt="" class="about__clients-art about__clients-art--visible" aria-hidden="true" />
+    <p class="about__clients-title">Clients &amp; Experience</p>
+    <p class="about__clients-sub">Companies and teams I’ve had the chance to design with.</p>
+    {clientPills.map((p) => (
+      <span class="about__pill" style={`left:${p.left}px;top:${p.top}px;`}>{p.label}</span>
+    ))}
+  </div>
+  </div>
+</section>
+
+<style>
+  .about__collage { position: absolute; inset: 0; }
+  .about {
+    position: absolute;
+    left: 50%;
+    top: 3863px;
+    width: 1248px;
+    height: 1017px;
+    transform: translateX(-50%);
+  }
+
+  :global(.about__heading.section-heading) {
+    position: absolute;
+    left: calc(50% + 53.5px);
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .about__tagline {
+    position: absolute;
+    left: calc(50% + 53.5px);
+    top: 199.57px;
+    width: 563px;
+    transform: translateX(-50%) rotate(-1deg);
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: normal;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .about__photo {
+    position: absolute;
+    left: 370px;
+    top: 542px;
+    transform: translate(-50%, -50%) rotate(-4deg);
+  }
+  .about__photo-shadow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    border-radius: 156px;
+    background: var(--color-ink);
+  }
+  .about__photo-mask {
+    position: absolute;
+    left: calc(50% + 6.71px);
+    top: calc(50% - 9.1px);
+    transform: translate(-50%, -50%);
+    width: 405.938px;
+    height: 405.937px;
+    border-radius: 158px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .about__photo-mask img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about__bubble-art {
+    position: absolute;
+    left: 589px;
+    top: 296px;
+    width: 645.698px;
+    height: 398.759px;
+    transform: rotate(6.12deg) scaleY(0.99) skewX(8.55deg);
+    max-width: none;
+  }
+  .about__bubble-art--back { left: 579px; top: 286px; }
+
+  .about__intro {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 32px;
+    line-height: 1.3;
+    color: var(--color-text);
+    text-align: left;
+  }
+  .about__intro--1 {
+    left: calc(50% - 30.29px);
+    top: 335.88px;
+    width: 560px;
+    transform: rotate(5deg);
+  }
+  .about__intro--2 {
+    left: calc(50% - 23.14px);
+    top: 518.7px;
+    width: 540px;
+    transform: rotate(3.65deg);
+  }
+
+  .about__mail-art {
+    position: absolute;
+    width: 672.596px;
+    height: 671.163px;
+    transform: rotate(137.79deg) scaleY(-1);
+    max-width: none;
+  }
+  .about__mail-art--shadow { left: 35.66px; top: 479.79px; }
+  .about__mail-art--visible { left: 30.65px; top: 474.79px; }
+
+  .about__hello {
+    position: absolute;
+    left: 126px;
+    top: 762px;
+    width: 454px;
+    transform: rotate(-2deg);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .about__email {
+    position: absolute;
+    left: 173px;
+    top: 839px;
+    width: 360px;
+    transform: rotate(-2deg);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .about__clients {
+    /* Figma has this as a non-positioning "contents" wrapper — its
+       children are positioned directly against .about below, not offset
+       from this box. Keep it a plain, non-positioned wrapper. */
+  }
+  .about__clients-art {
+    position: absolute;
+    width: 562px;
+    height: 327px;
+    max-width: none;
+  }
+  .about__clients-art--shadow { left: 641px; top: 690px; }
+  .about__clients-art--visible { left: 633px; top: 682px; }
+  .about__clients-title {
+    position: absolute;
+    left: calc(50% + 130px);
+    top: 714px;
+    width: 319px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--color-ink);
+  }
+  .about__clients-sub {
+    position: absolute;
+    left: calc(50% + 289.19px);
+    top: 777px;
+    width: 418px;
+    transform: translateX(-50%);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 24px;
+    color: #222;
+    text-align: center;
+  }
+  .about__pill {
+    position: absolute;
+    width: 165px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(51, 51, 51, 0.6);
+    border-radius: 36px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import WorkedWith from '../components/WorkedWith.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Maryamul Aasia — Product / UI UX Designer">
+  <div class="landing">
+    <div class="landing__grain" aria-hidden="true"></div>
+
+    <Hero />
+    <Nav />
+
+    <SectionHeading
+      class="landing__featured-heading"
+      width={471}
+      height={199.148}
+      back={{ src: '/images/stickers/featured-tag-front.svg', left: 6, top: 7.39, w: 474, h: 183 }}
+      front={{ src: '/images/stickers/featured-tag-back.png', left: 0, top: 1, w: 476, h: 183 }}
+      word1={{ text: 'Featured', left: 187.97, top: 1.51, w: 298.066, h: 140.197 }}
+      word2={{ text: 'Works', left: 363.37, top: 76.23, w: 210.719, h: 123.684 }}
+    />
+    <p class="landing__tagline">A few things I’ve designed, shipped, <br />and learned from along the way.</p>
+
+    <ProjectCard
+      variant={1}
+      index="01"
+      top={1436.58}
+      date="Mar 2026"
+      title="Oni Cares"
+      description="An AI-powered care platform connecting doctors, care teams, and expecting mothers."
+      tags={[
+        { label: 'Healthcare UX ', pill: '/images/stickers/tag-pill-a.svg', width: 276 },
+        { label: 'Clinical app', pill: '/images/stickers/tag-pill-b.svg', width: 217.691 },
+      ]}
+    />
+
+    <ProjectCard
+      variant={2}
+      index="02"
+      top={2099.58}
+      date="May 2026"
+      title="Fic Non-Fic"
+      description="A reading app for finding your next book, your kind of people, and your kind of stories."
+      tags={[
+        { label: 'Community ', pill: '/images/stickers/tag-pill-c.svg', width: 206.129 },
+        { label: 'Consumer App', pill: '/images/stickers/tag-pill-c.svg', width: 206.129 },
+      ]}
+    />
+
+    <ProjectCard
+      variant={3}
+      index="03"
+      top={2762.58}
+      date="Mar 2025"
+      title="BCL"
+      description="An AI-powered career coach helping people set goals, build habits, and grow with intention."
+      tags={[
+        { label: 'B2B SAAS', pill: '/images/stickers/tag-pill-d.svg', width: 206.129 },
+        { label: 'AI Coaching', pill: '/images/stickers/tag-pill-d.svg', width: 206.129 },
+      ]}
+    />
+
+    <WorkedWith />
+    <AboutMe />
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .landing {
+    position: relative;
+    width: var(--canvas-width);
+    height: 5640px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+  .landing__grain {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/paper-grain.png');
+    background-size: 307.2px 204.8px;
+    background-position: top left;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  :global(.landing__featured-heading.section-heading) {
+    position: absolute;
+    left: calc(50% + 0.5px);
+    top: 1071.61px;
+    transform: translateX(-50%);
+  }
+
+  .landing__tagline {
+    position: absolute;
+    left: 50%;
+    top: 1271.54px;
+    width: 520px;
+    transform: translateX(-50%) rotate(-1deg);
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: normal;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+  }
+</style>

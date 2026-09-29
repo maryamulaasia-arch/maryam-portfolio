@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import NoteGrid from '../../components/oni/NoteGrid.astro';
+import InsightNotes from '../../components/oni/InsightNotes.astro';
+import PhotoMount from '../../components/oni/PhotoMount.astro';
+import '../../styles/oni.css';
+
+// Reference: Referance/Casestudies/ONI Case study.png (2616 × 32768).
+// Positions use half-export coordinates, scaled once to the site's 1440px canvas.
+const problems = [
+  { title: 'Missed inputs', text: 'Important information could be\nskipped or documented later.' },
+  { title: 'Divided attention', text: 'Typing competed with the\npatient conversation.' },
+  { title: 'Inconsistent records', text: 'Documentation varied across\ndoctors and visits.' },
+  { title: 'No safety net', text: "The system couldn't surface\npotentially missing information." },
+];
+const roles = [
+  { title: '0→1 Product Design', text: 'Led the end-to-end design of the\ndoctor-facing mobile app' },
+  { title: 'AI UX', text: 'Designed AIPrompts, follow-ups,\nsummaries, and information retrieval' },
+  { title: 'Responsive Design', text: 'Responsive design across web,\ntablet & mobile' },
+  { title: 'AI Testing', text: 'Testing AI responses across clinical\nedge cases' },
+];
+const insights = [
+  { title: 'Notes came\nsecond', text: 'Patient conversations took priority.' },
+  { title: 'Doctors need\nflexibility', text: 'Clinical work happens across rooms and settings.' },
+  { title: 'Data entry adds\nfriction', text: 'Long forms increase cognitive load.' },
+  { title: 'AI should assist,\nnot replace', text: 'Doctors need control over generated information.' },
+];
+const competitors = [
+  ['HealthPlix', 'Strong', 'Strong', 'Strong', 'Strong', 'Moderate', 'Moderate'],
+  ['Eka Care', 'Moderate', 'Moderate', 'Moderate', 'Moderate', 'Strong', 'Strong'],
+  ['Augnito', 'Moderate', 'Strong', 'Strong', 'Border', 'Limited', 'Strong'],
+  ['Practo Ray', 'Strong', 'Moderate', 'Limited', 'Limited', 'Strong', 'Limited'],
+  ['Hospital HIS', 'Strong', 'Strong', 'Limited', 'Varies', 'Strong', 'Limited'],
+];
+const principles = [
+  { title: 'Short consultations', text: 'Capture first, AI-completed' },
+  { title: 'AI can miss information', text: 'Design for review' },
+  { title: "AI shouldn't interrupt care", text: 'Assist in the background' },
+  { title: 'Clinical data is complex', text: 'Structure where possible' },
+];
+const results = [
+  { title: '45% reduction in', text: 'documentation time' },
+  { title: '60–70% improvement in', text: 'structured data completeness' },
+  { title: '30% reduction in missed', text: 'clinical inputs' },
+  { title: '2X faster prescription', text: 'generation' },
+];
+const learnings = [
+  { title: 'Trust is an\ninteraction', text: 'Doctors need visibility and control over AI output.' },
+  { title: 'AI design includes\nuncertainty', text: 'The experience must account for incomplete and incorrect outputs.' },
+  { title: 'Responsive design\nis workflow design', text: 'Each device should support a different clinical moment.' },
+  { title: 'Design goes\nbeyond screens', text: 'The solution balanced clinical needs, AI limits, workflow, and feasibility.' },
+];
+---
+
+<BaseLayout title="ONI Cares — Maryamul Aasia" description="Designing an AI assistant for high-stakes medical consultations.">
+  <div class="oni-page">
+    <main class="oni-art">
+      <section class="oni-hero" aria-labelledby="oni-title">
+        <h1 id="oni-title" class="oni-title"><span class="oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><b class="ink-text">ONI</b></span><span class="oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><b class="ink-text">CARES</b></span></h1>
+        <img class="oni-hero-devices" src="/images/oni/hero.png" alt="ONI Cares on desktop, tablet, and mobile" width="1162" height="732" />
+        <div class="oni-hero-label oni-backed"><i class="oni-black-backing" aria-hidden="true"></i>UX / Product Design<br />Health Care UX</div>
+        <div class="oni-facts oni-backed"><i class="oni-black-backing" aria-hidden="true"></i>
+          <p>AI-Powered Tools for Gynecologists</p>
+          <dl>{[['Product', 'ONI DIDI'], ['Domain', 'Maternal\nHealth'], ['Platform', 'Responsive\nDesign'], ['Role', 'Product\nDesigner']].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+        </div>
+      </section>
+      <div class="oni-torn oni-torn--hero" aria-hidden="true"></div>
+      <section class="oni-about" aria-labelledby="about-oni">
+        <h2 id="about-oni" class="ink-text">ABOUT ONI</h2>
+        <div class="oni-about-copy"><h3>Designing an AI Assistant for High-Stakes Medical Consultations</h3>
+          <p>ONI (Continuum Pregnancy Care) is an AI-powered healthcare platform connecting Ob-Gyns, clinic staff, and expecting mothers through a unified pregnancy-care ecosystem, with a doctor-facing Electronic Medical Record (EMR), mother-facing mobile app, and shared design system.</p>
+          <p>Doctors need to diagnose, decide, and document without losing focus on the patient.</p>
+          <div class="oni-ribbons oni-ribbons--yellow"><span>Healthcare UX</span><span>Clinical app</span></div>
+        </div>
+        <div class="oni-about-photo"><PhotoMount src="/images/oni/About.png" alt="An expecting mother in a yellow dress" color="#ffedbf" /></div>
+      </section>
+      <div class="oni-problem-role">
+      <section class="oni-problem" aria-labelledby="problem-heading">
+        <h2 id="problem-heading" class="ink-text">PROBLEM STATEMENT</h2>
+        <img class="oni-problem-image" src="/images/oni/problem statement.png" alt="The existing ONI EMR prescription and documentation interface" width="1771" height="1189" />
+        <div class="oni-problem-copy oni-copy"><p>The existing EMR relied heavily on manual documentation, making it difficult for doctors to capture information while managing the patient conversation.</p><p><strong>High patient volume · Time-sensitive consultations · Diagnosis + documentation</strong></p></div>
+        <div class="oni-problem-notes"><NoteGrid items={problems} color="#efdcff" /></div>
+        <blockquote class="oni-quote oni-problem-quote"><p>“The information isn’t the problem. It’s documenting<br />everything accurately while managing the consultation.”</p><cite>— Gynaecologist research interview</cite><span class="oni-sticker oni-sticker--heart" aria-hidden="true"></span><span class="oni-sticker oni-sticker--chat" aria-hidden="true"></span></blockquote>
+      </section>
+      <section class="oni-role" aria-labelledby="role-heading">
+        <div class="oni-torn oni-torn--role" aria-hidden="true"></div>
+        <h2 id="role-heading" class="ink-text">MY ROLE</h2>
+        <p class="oni-copy oni-role-copy">I worked as the Product Designer for ONI’s doctor-facing experience, focusing on how AI could reduce documentation effort without interrupting care.</p>
+        <div class="oni-role-notes"><NoteGrid items={roles} /></div>
+        <div class="oni-ribbons oni-role-ribbons"><span>CROSS FUNCTION<br />COLLABORATION</span><span>SYSTEM THINKING</span><span>PROBLEM SOLVING</span></div>
+      </section>
+      </div>
+      <section class="oni-research" aria-labelledby="research-heading">
+        <h2 id="research-heading" class="ink-text">USER RESEARCH</h2>
+        <div class="oni-copy oni-research-copy"><p>We conducted in-depth interviews with gynaecologists across private clinics and multi-specialty hospitals, ranging from solo practitioners seeing 30 patients a day to department heads managing multi-location teams, revealed three recurring themes:</p><p class="oni-centered"><strong>Time pressure · Multitasking · Low tolerance for unreliable AI</strong></p></div>
+        <div class="oni-persona oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><img src="/images/oni/user research.png" alt="Dr. Zoya Khan user persona portrait" width="578" height="670" /><div><p class="oni-persona-label">User Persona</p><h3 class="ink-text">DR.ZOYA KHAN</h3><p class="oni-persona-intro">She prefers talking to patients over typing and only uses new tech if it's truly useful.</p><dl><div><dt>Designation</dt><dd>CONSULTANT OBGYN</dd></div><div><dt>Experience</dt><dd>12 YEARS</dd></div><div><dt>Location</dt><dd>MUMBAI</dd></div><div><dt>Workplace</dt><dd>UJALA CLINIC</dd></div></dl><p class="oni-persona-traits">High Caseload · Time Pressured<br />Tech Cautious · Detail-Oriented</p></div></div>
+        <article class="oni-persona-note oni-reality oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><h3>Daily Reality</h3><ul><li>20–35 consultations across two clinics, with little time between patients</li><li>Relies on memory for notes, medication history, and follow-ups</li><li>Manages high-risk pregnancies alongside scheduling, calls, and lab coordination</li></ul></article>
+        <article class="oni-persona-note oni-expectations oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><h3>Expectations from Tech</h3><ul><li>Fast and intuitive, with no training or workflow disruption</li><li>Understands Hindi + English-mixed conversations and captures key inputs</li><li>AI assists without taking control, she makes the final decisions</li></ul></article>
+        <article class="oni-persona-note oni-success oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><h3>Success for Her</h3><ul><li>Zero missed inputs during consultations</li><li>Complete, consistent records without post-session catch-up</li><li>A reliable tool that earns trust through accuracy</li></ul></article>
+        <h3 class="oni-insights-heading">Research Insights</h3><div class="oni-insights"><InsightNotes items={insights} /></div>
+      </section>
+      <section class="oni-market" aria-labelledby="market-heading">
+        <h2 id="market-heading" class="ink-text">MARKET RESEARCH</h2>
+        <div class="oni-market-photo"><PhotoMount src="/images/oni/market research.png" alt="A doctor consulting with an expecting mother" color="#e4ffe5" /></div>
+        <div class="oni-market-copy"><p>Documentation is a significant source of clinician workload. Physicians can spend nearly <strong>2 hours on EMR work per hour of direct patient care</strong> (Sinsky et al.). A 2026 study found <strong>45% of EMR time occurred outside scheduled hours</strong>, averaging <strong>3 hours per 8 scheduled hours</strong> (Rule et al.).</p><p>In a <strong>263-clinician study</strong>, reported burnout fell from <strong>51.9% → 38.8% after 30 days</strong> with an ambient AI scribe, alongside a <strong>54 mins reduction in after-hours documentation</strong> (Olson et al., JAMA Network Open, 2025).</p></div>
+        <blockquote class="oni-quote oni-market-quote"><p>The opportunity wasn't simply faster<br />documentation, it was lower cognitive load.</p></blockquote>
+        <h3 class="oni-indian-heading">Indian Context</h3>
+        <div class="oni-copy oni-indian-copy"><p>A review of <strong>28.5M primary-care consultations across 67 countries</strong> found consultation times ranging from <strong>48 seconds to 22.5 minutes</strong>; in <strong>18 countries</strong>, average consultations were <strong>5 minutes or less</strong> (Irving et al., BMJ Open, 2017).</p><p>This suggested a different approach from traditional ambient scribes:</p><p><strong>Listen → Transcribe to Capture → AI Complete → Doctor Review</strong></p></div>
+      </section>
+      <section class="oni-competition" aria-labelledby="competition-heading">
+        <h2 id="competition-heading" class="ink-text">COMPETITIVE LANDSCAPE</h2>
+        <p class="oni-copy oni-competition-copy">I evaluated competitors across: <strong>Clinical workflow · Documentation · AI assistance · Specialty depth · Patient context · Device flexibility</strong></p>
+        <table><thead><tr>{['Product', 'Workflow', 'Docs', 'AI', 'Specialty', 'Context', 'Devices'].map(label => <th scope="col">{label}</th>)}</tr></thead><tbody>{competitors.map(row => <tr>{row.map((cell,i) => i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table>
+        <h3 class="oni-opportunity-heading">The opportunity</h3><p class="oni-copy oni-opportunity-copy">Most solutions focused on one part of the workflow: <strong>records, voice, practice management, or AI-assisted entry.</strong></p>
+        <blockquote class="oni-quote oni-opportunity-quote"><p>ONI could connect patient context, clinical workflow, AI assistance, and pregnancy-specific care.</p></blockquote>
+      </section>
+      <section class="oni-principles" aria-labelledby="principles-heading">
+        <h2 id="principles-heading" class="ink-text">RESEARCH TO DESIGN PRINCIPALS</h2>
+        <div class="oni-principles-notes"><NoteGrid items={principles} /></div>
+        <h3 class="oni-device-heading">Doctors work across environments so Design for each device</h3>
+        <div class="oni-ribbons oni-device-ribbons"><span>Desktop for<br />deep work</span><span>Tablet for<br />consultation</span><span>Mobile for on<br />the go use.</span></div>
+      </section>
+      <section class="oni-journey" aria-labelledby="journey-heading">
+        <h2 id="journey-heading" class="ink-text">USER JOURNEY</h2>
+        <p class="oni-copy oni-journey-copy">The key opportunity was to move documentation <strong>into the consultation flow</strong>, rather than treating it as a separate task. This user journey is based on the existing flow.</p>
+        <p class="oni-journey-steps"><strong>Prepare → Review → Consult → Capture → Review → Prescribe → Follow-up</strong></p>
+        <img src="/images/oni/consultation-journey-map.png" alt="Consultation journey map: prepare, find the history, consult, defer, and catch up; documenting actions, thoughts, feelings, friction, and consequences" width="2444" height="2370" />
+      </section>
+      <section class="oni-architecture" aria-labelledby="architecture-heading"><h2 id="architecture-heading" class="ink-text">INFORMATION ARCHITECTURE</h2><img src="/images/oni/oni-information-architecture.png" alt="ONI doctors interface architecture across onboarding, home screen, and consultation screen" width="2000" height="1392" /></section>
+      <section class="oni-flow" aria-labelledby="flow-heading"><h2 id="flow-heading" class="ink-text">USER FLOW</h2><img class="oni-flow-map" src="/images/oni/oni-user-flow 1.png" alt="User flow from ONI home through chat, patient waitlist, patient summary and recording to consultation screens" width="2400" height="464" /><img class="oni-wireframes" src="/images/oni/wireframe.png" alt="Five mobile wireframes showing the consultation flow" width="2560" height="1063" /></section>
+      <section class="oni-ui" aria-labelledby="ui-heading">
+        <h2 id="ui-heading" class="ink-text">UI DESIGNS</h2><h3 class="oni-home-heading">Home Screen</h3>
+        <p class="oni-copy oni-home-copy">The general home screen across devices displays the doctor's profile, a basic patient summary, and the active queue. However, to fit the smaller mobile layout properly, the patient queue is removed from the mobile home screen and relocated to a separate screen.</p>
+        <img class="oni-home-screens" src="/images/oni/home screens.png" alt="ONI home screens on desktop, tablet, and mobile" width="2492" height="1216" />
+        <h3 class="oni-prescription-heading">Prescription Flow</h3>
+        <div class="oni-copy oni-prescription-copy"><p>One of the biggest design challenges was breaking down a complex desktop prescription page which displays everything simultaneously into smaller sections. For tablets, adding sub-tabs made it easy for doctors to track their location and remember to scroll. However, on mobile. I was bit Challengeing</p><p>On the desktop prescription page, all sections were displayed simultaneously, including symptoms medication, supplements medication , doctor notes, follow-up dates, and additional tests.</p></div>
+        <img class="oni-prescription-screens" src="/images/oni/prescription.png" alt="Desktop and tablet prescription interfaces" width="1964" height="1216" /><p class="oni-annotation oni-subtabs">⟵ Sub Tabs</p>
+        <p class="oni-copy oni-mobile-copy">On mobile screens, each of those subsections is separated into its own individual screen instead of appearing all at once.</p>
+        <img class="oni-mobile-screens" src="/images/oni/prescription mobile.png" alt="Six mobile prescription screens with separate medication, notes, and follow-up steps" width="2691" height="930" />
+        <h3 class="oni-risk-heading">Keeping Patient Risk Always Visible</h3><p class="oni-copy oni-risk-copy">I surfaced the <strong>risk level at the top of the patient card</strong>, keeping it visible even while scrolling on mobile. The same risk indicator is reinforced within the appointment view, so critical patient context stays easy to spot throughout the consultation.</p>
+        <img class="oni-risk-screens" src="/images/oni/risk.png" alt="Patient risk indicators in the mobile patient header and appointment list" width="917" height="930" /><p class="oni-annotation oni-risk-header">Risk factor in Header ⟵</p><p class="oni-annotation oni-risk-appointment">⟶ Risk factor in appointment</p>
+      </section>
+      <section class="oni-validation" aria-labelledby="validation-heading">
+        <h2 id="validation-heading" class="ink-text">VALIDATION &amp; RESULTS</h2><p class="oni-copy oni-validation-intro">In 12 simulated consultations with 3 Ob-Gyn doctors, the prototype showed:</p>
+        <div class="oni-results"><NoteGrid items={results} color="#fff0e5" metrics /></div>
+        <div class="oni-copy oni-validation-copy"><p>Doctors reported greater confidence when AI outputs were <strong>reviewable and explicitly confirmed.</strong></p><p>Prototype validation results; not production deployment metrics.</p></div>
+        <h3 class="oni-learning-heading">Learnings</h3><div class="oni-learnings"><InsightNotes items={learnings} /></div>
+        <h3 class="oni-sources-heading">Sources</h3><div class="oni-ribbons oni-source-ribbons"><span>EHR workload: <small>Sinsky<br />et al.; Rule et al.</small></span><span>AI scribe impact:<small>Olson et al., JAMA<br />Network Open, 2025</small></span><span>Consultation length<small>Irving et al.,<br />BMJ Open, 2017</small></span></div>
+      </section>
+      <div class="oni-torn oni-torn--end" aria-hidden="true"></div>
+      <section class="oni-more" aria-labelledby="more-heading">
+        <h2 id="more-heading" class="oni-more-heading"><span class="oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><b class="ink-text">MORE</b></span><span class="oni-backed"><i class="oni-black-backing" aria-hidden="true"></i><b class="ink-text">WORKS</b></span></h2>
+        <WorkCard class="oni-more-bcl" color="#be4f52" lightText date="Mar 2025" title="BCL" href="/work/bcl" description={['An AI-powered career coach', 'helping people set goals, build', 'habits, and grow with intention.']} tags={['AI Life Coach', 'B2B SAAS']} image="/images/photos/project3-bcl-macbook.jpg" imagePosition="center" />
+        <WorkCard class="oni-more-fic" color="#f8d3ab" date="May 2026" title="FIC NON-FIC" description={['A reading app for finding your', 'next book, your kind of people,', 'and your kind of stories.']} tags={['Healthcare UX', 'Clinical app']} image="/images/photos/project2-ficnonfic-phone.jpg" imagePosition="center 30%" href="/work/fic-non-fic" />
+      </section>
+    </main>
+    <Nav current="works" />
+    <Footer top={17487} />
+  </div>
+</BaseLayout>

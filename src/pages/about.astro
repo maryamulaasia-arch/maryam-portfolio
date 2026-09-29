@@ -1,0 +1,394 @@
+---
+// Desktop "Final About" page (Figma node 206:572), built from reference
+// screenshots (the Figma MCP was rate-limited for this build — see the
+// project README for what's confirmed-exact vs. screenshot-estimated).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Footer from '../components/Footer.astro';
+
+const educationEntries = [
+  {
+    period: '2024 · UI/UX Design',
+    text: 'Turned my interest in business and problem-solving into product design at Lollypop Academy.',
+  },
+  {
+    period: '2021–2024 · B.Com',
+    text: 'Built a foundation in business, commerce, and understanding how organisations work.',
+  },
+];
+
+// Two deliberate rows — matches the arrangement in the Figma reference
+// rather than letting flex-wrap decide where the line breaks.
+const clientRows = [
+  ['BCL', 'Hapello', 'Oni Cares'],
+  ['Fic Non-fic', 'Anchae'],
+];
+---
+
+<BaseLayout title="About — Maryamul Aasia" description="The designer, reader, and curious mind behind the work.">
+  <div class="about-page">
+    <div class="about-page__grain" aria-hidden="true"></div>
+
+    <Nav current="about" />
+
+    <SectionHeading
+      class="about-page__heading"
+      width={295}
+      height={199}
+      back={{ src: '/images/stickers/about-tag-front.svg', left: 5, top: 19.5, w: 288, h: 162.5 }}
+      front={{ src: '/images/stickers/about-tag-back.png', left: 0, top: 14.5, w: 288, h: 162.5 }}
+      word1={{ text: 'About', left: 101.47, top: 5.95, w: 199.457, h: 131.41 }}
+      word2={{ text: 'me', left: 232.91, top: 75, w: 91.827, h: 118.607 }}
+    />
+    <p class="about-page__tagline">The Designer, Reader, and Curious mind <br />behind the work.</p>
+
+    <div class="about-page__portrait" aria-hidden="true">
+      <img class="about-page__portrait-fig" src="/images/illustrations/about-portrait-lineart.png" alt="" />
+    </div>
+
+    <div class="about-page__card about-page__card--intro">
+      <span class="about-page__card-shadow" aria-hidden="true"></span>
+      <div class="about-page__card-body">
+        <span class="about-page__card-texture" aria-hidden="true"></span>
+        <p>Hi, I’m Maryam 👋 I’m a product<br />designer who loves turning messy<br />problems into simple, useful<br />experiences.</p>
+        <p>I design digital products with<br />curiosity, clarity, and a<br />human touch.</p>
+      </div>
+    </div>
+
+    <div class="about-page__card about-page__card--education">
+      <span class="about-page__card-shadow" aria-hidden="true"></span>
+      <div class="about-page__card-body">
+        <span class="about-page__card-texture" aria-hidden="true"></span>
+        <h3 class="about-page__card-title">Education</h3>
+        {educationEntries.map((e) => (
+          <div class="about-page__edu-entry">
+            <p class="about-page__edu-period">{e.period}</p>
+            <p class="about-page__edu-text">{e.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="about-page__card about-page__card--clients">
+      <span class="about-page__card-shadow" aria-hidden="true"></span>
+      <div class="about-page__card-body">
+        <span class="about-page__card-texture" aria-hidden="true"></span>
+        <h3 class="about-page__card-title">Clients &amp; Experience</h3>
+        <p class="about-page__card-sub">Companies and teams I’ve had the chance to design with.</p>
+        <div class="about-page__pills">
+          {clientRows.map((row) => (
+            <div class="about-page__pill-row">
+              {row.map((p) => (
+                <span class="about-page__pill">{p}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="about-page__banner">
+      <span class="about-page__banner-shadow" aria-hidden="true"></span>
+      <div class="about-page__banner-body">
+        <span class="about-page__banner-texture" aria-hidden="true"></span>
+        <p class="about-page__banner-hello">Good things starts from Hello!</p>
+        <a href="mailto:maryamulaasia@gmail.com" class="about-page__banner-email">Maryamulaasia@gmail.com</a>
+      </div>
+    </div>
+
+    <Footer top={1451} />
+  </div>
+</BaseLayout>
+
+<style>
+  .about-page {
+    position: relative;
+    width: var(--canvas-width);
+    height: 2001px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+  .about-page__grain {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/paper-grain.png');
+    background-size: 307.2px 204.8px;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  :global(.about-page__heading.section-heading) {
+    position: absolute;
+    left: 50%;
+    top: 158px;
+    transform: translateX(-50%);
+  }
+
+  .about-page__tagline {
+    position: absolute;
+    left: 50%;
+    top: 360px;
+    width: 620px;
+    transform: translateX(-50%) rotate(-1deg);
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: normal;
+    color: var(--color-text);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ---- COLLAGE LAYER 1 (back): the Maryam illustration is laid down first,
+     freely positioned toward the left. The box is clipped short so only her
+     head / shoulders / upper body show — her dark lower body is cropped off
+     and the crop seam is then hidden under the Education paper. She must
+     read as tucked BEHIND the cards, never in her own column. ---- */
+  .about-page__portrait {
+    position: absolute;
+    left: 258px;
+    top: 416px;
+    width: 480px;
+    height: 480px;
+  }
+  .about-page__portrait-fig {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 480px;
+    height: 480px;
+    display: block;
+  }
+
+  /* ---- shared "paper cutout" pattern: a solid offset black shape sits
+     just behind each rotated colored note — no stroke/border on the
+     note itself, so it reads as paper, not a UI card. The backing carries
+     a faint printed-paper grain (baked raster, not a live filter). ---- */
+  .about-page__card {
+    position: absolute;
+  }
+  /* Each colored paper carries its OWN backing: the exact same rectangle,
+     nudged straight DOWN (and a hair right) so a thin flat black edge peeks
+     out only along the BOTTOM edge — never along the top. It is a sibling
+     BEHIND the paper — not a shadow, outline or bar, never shared. */
+  .about-page__card-shadow {
+    position: absolute;
+    left: 3px;
+    top: 6px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-ink);
+    background-image: url('/images/textures/noise-black.png');
+    background-size: 200px 200px;
+    border-radius: 3px;
+  }
+  .about-page__card-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .about-page__card-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/dot-grain.png');
+    background-size: 180px 120px;
+    opacity: 0.05;
+  }
+  .about-page__card-title {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--color-ink);
+    text-align: center;
+  }
+
+  /* COLLAGE LAYERS 6-7 (front): the big bio paper + its backing. Topmost of
+     the collage — it comes down over the illustration's right side and over
+     the whole TOP band of the Clients paper, so bio's bottom edge sits in
+     front of Clients (no gap between them). */
+  .about-page__card--intro {
+    left: 616px;
+    top: 450px;
+    width: 632px;
+    height: 330px;
+    transform: rotate(2deg);
+    z-index: 3;
+  }
+  .about-page__card--intro .about-page__card-body {
+    background: #83ccdd;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 34px 44px 0;
+  }
+  .about-page__card--intro p {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+
+  /* COLLAGE LAYERS 4-5: Education backing + paper. Sits ON TOP of its own
+     backing and of the illustration's lower body (covers the crop seam),
+     and its right edge runs into the Clients paper — no clean gap between
+     them. Left of centre, tilted anticlockwise. */
+  .about-page__card--education {
+    left: 172px;
+    top: 775px;
+    width: 540px;
+    height: 286px;
+    transform: rotate(-3deg);
+    z-index: 2;
+  }
+  .about-page__card--education .about-page__card-body {
+    background: #3d96c7;
+    padding: 28px 38px;
+  }
+  .about-page__card--education .about-page__card-title {
+    font-size: 31px;
+    margin-bottom: 20px;
+  }
+  .about-page__edu-entry {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .about-page__edu-entry:last-child { margin-bottom: 0; }
+  .about-page__edu-period {
+    margin: 0 0 6px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 21px;
+    color: var(--color-ink);
+  }
+  .about-page__edu-text {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #1c1c1c;
+  }
+
+  /* COLLAGE LAYERS 2-3: Clients backing + paper — laid down early, so its
+     TOP is later covered by the bio paper and its LEFT runs under Education.
+     Right of centre, tilted clockwise, lowest z of the three papers. */
+  .about-page__card--clients {
+    left: 664px;
+    top: 780px;
+    width: 600px;
+    height: 286px;
+    transform: rotate(2.5deg);
+    z-index: 1;
+  }
+  /* extra left padding keeps the heading, description and pills clear of the
+     Education paper that overlaps this card's left edge — content sits
+     centred in the *visible* area, nothing is clipped. */
+  .about-page__card--clients .about-page__card-body {
+    background: #a9dcee;
+    padding: 26px 30px 26px 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-page__card--clients .about-page__card-title {
+    margin-bottom: 8px;
+  }
+  .about-page__card-sub {
+    position: relative;
+    margin: 0 0 22px;
+    font-family: var(--font-sans);
+    font-size: 16.5px;
+    color: #222;
+    text-align: center;
+  }
+  .about-page__pills {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .about-page__pill-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+  .about-page__pill {
+    padding: 10px 22px;
+    border: 1px solid rgba(30, 30, 30, 0.55);
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  /* The red mail paper is its own collage object placed slightly ON TOP of
+     the lower edge of the Clients paper — z-index sits above every blue
+     card so the red frame (and its own black backing) covers that seam. */
+  .about-page__banner {
+    position: absolute;
+    left: 184px;
+    top: 1056px;
+    width: 1080px;
+    height: 216px;
+    transform: rotate(-2.5deg);
+    z-index: 4;
+  }
+  .about-page__banner-shadow {
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-ink);
+    background-image: url('/images/textures/noise-black.png');
+    background-size: 200px 200px;
+    border-radius: 3px;
+  }
+  .about-page__banner-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #a6393c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 0 38px;
+  }
+  .about-page__banner-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/textures/dot-grain.png');
+    background-size: 180px 120px;
+    opacity: 0.08;
+  }
+  .about-page__banner-hello {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 26px;
+    color: var(--color-white);
+  }
+  .about-page__banner-email {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 34px;
+    color: var(--color-white);
+  }
+</style>

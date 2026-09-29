@@ -1,0 +1,70 @@
+/*
+  Global base styles shared by every page.
+  Kept minimal for now — real layout/visual styles get added
+  page-by-page as we build Landing, Work, About, etc.
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: none;
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*
+  Reusable "imperfect printed ink" treatment for DISPLAY / DECORATIVE type.
+  Masks the element's own alpha with a paper-ink grain (baked from
+  /images/textures/text-ink-texture.png) so the glyphs keep their exact
+  colour but gain a subtle irregular printed density — a few worn / thin
+  spots, never a colour change and never a visible rectangle.
+
+  Use ONLY on non-Inter type (Bebas Neue / DM Mono / Special Elite display
+  bits) where the Figma reference shows the effect. NEVER on Inter body copy.
+*/
+.ink-text {
+  -webkit-mask-image: url('/images/textures/text-ink-mask.png');
+          mask-image: url('/images/textures/text-ink-mask.png');
+  -webkit-mask-repeat: repeat;
+          mask-repeat: repeat;
+  -webkit-mask-size: 240px auto;
+          mask-size: 240px auto;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-mode: alpha;
+          mask-mode: alpha;
+}

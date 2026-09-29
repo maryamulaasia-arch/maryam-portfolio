@@ -1,0 +1,16 @@
+---
+interface Props { src: string; alt: string; color: string }
+const { src, alt, color } = Astro.props;
+---
+<figure style={`background:${color}`}>
+  <img class="photo" src={src} alt={alt} />
+  <span class="star"><img src="/images/stickers/project1-sticker-a.png" alt="" aria-hidden="true" /></span>
+  <img class="tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" />
+</figure>
+<style>
+  figure { position:relative; margin:0; padding:20px 14px; box-shadow:0 1px 9px #0002; }
+  .photo { width:100%; height:auto; }
+  .star { position:absolute; top:-32px; left:-22px; width:96px; height:95px; overflow:hidden; transform:rotate(-15deg); }
+  .star img { position:absolute; width:149px; height:112px; left:-29px; top:-16px; }
+  .tape { position:absolute; width:125px; height:auto; right:-29px; bottom:5px; transform:rotate(-25deg); }
+</style>

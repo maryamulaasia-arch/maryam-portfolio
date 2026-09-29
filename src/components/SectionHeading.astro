@@ -1,0 +1,95 @@
+---
+// The recurring "two words on a torn paper strip" collage headline —
+// used for the name tag, "Featured Works", "Worked with" and "About me".
+// Every instance shares the same Bebas Neue 96px treatment and the same
+// -5.09deg / 2.45deg word rotations; only the strip artwork, box size and
+// word placement differ per instance.
+interface WordBox {
+  text: string;
+  left: number;
+  top: number;
+  w: number;
+  h: number;
+}
+interface ImgBox {
+  src: string;
+  left: number;
+  top: number;
+  w: number;
+  h: number;
+}
+
+interface Props {
+  width: number;
+  height: number;
+  front: ImgBox;
+  back: ImgBox;
+  word1: WordBox;
+  word2: WordBox;
+  class?: string;
+}
+
+const { width, height, front, back, word1, word2, class: className } = Astro.props;
+---
+
+<div class:list={['section-heading', className]} style={`width:${width}px;height:${height}px;`}>
+  <img
+    src={back.src}
+    alt=""
+    aria-hidden="true"
+    class="section-heading__art"
+    style={`left:${back.left}px;top:${back.top}px;width:${back.w}px;height:${back.h}px;`}
+  />
+  <img
+    src={front.src}
+    alt=""
+    aria-hidden="true"
+    class="section-heading__art"
+    style={`left:${front.left}px;top:${front.top}px;width:${front.w}px;height:${front.h}px;`}
+  />
+  <span
+    class="section-heading__word-box section-heading__word-box--a"
+    style={`left:${word1.left}px;top:${word1.top}px;width:${word1.w}px;height:${word1.h}px;`}
+  >
+    <span class:list={['section-heading__word', 'section-heading__word--a', 'ink-text']}>{word1.text}</span>
+  </span>
+  <span
+    class="section-heading__word-box section-heading__word-box--b"
+    style={`left:${word2.left}px;top:${word2.top}px;width:${word2.w}px;height:${word2.h}px;`}
+  >
+    <span class:list={['section-heading__word', 'section-heading__word--b', 'ink-text']}>{word2.text}</span>
+  </span>
+</div>
+
+<style>
+  .section-heading {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-heading__art {
+    position: absolute;
+    max-width: none;
+  }
+  .section-heading__word-box {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+  }
+  .section-heading__word {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 96px;
+    line-height: normal;
+    color: var(--color-headline-fill);
+    white-space: nowrap;
+  }
+  .section-heading__word--a {
+    transform: rotate(-5.09deg);
+  }
+  .section-heading__word--b {
+    transform: rotate(2.45deg);
+  }
+</style>

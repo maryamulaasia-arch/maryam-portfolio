@@ -1,0 +1,40 @@
+/* Activated only after JavaScript has measured the existing navigation.
+   No reveal rules hide content: failed/disabled JS leaves every page visible. */
+body .nav[data-scroll-nav] {
+  position:fixed;
+  left:var(--scroll-nav-left);
+  z-index:100;
+  transition:opacity 180ms ease-out;
+}
+body .nav[data-scroll-nav='hidden'] {
+  opacity:0;
+  pointer-events:none;
+}
+body .nav[data-scroll-nav='visible'][data-scroll-nav-glass='true'] {
+  top:0;
+  height:100px;
+  display:flex;
+  align-items:center;
+  isolation:isolate;
+}
+body .nav[data-scroll-nav='visible'][data-scroll-nav-glass='true'] > a {
+  top:auto;
+  bottom:auto;
+  transform:none;
+}
+body .nav[data-scroll-nav='visible'][data-scroll-nav-glass='true']::before {
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100px;
+  z-index:-1;
+  pointer-events:none;
+  background:rgba(255,255,255,.60);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+@media (prefers-reduced-motion: reduce) {
+  body .nav[data-scroll-nav] { transition:none; }
+}

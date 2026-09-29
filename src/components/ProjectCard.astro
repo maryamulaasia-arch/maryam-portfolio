@@ -1,0 +1,348 @@
+---
+// One "folder" project card. The three landing-page instances share the
+// same folder-tab / photo-mount / stacked-paper structure but differ in
+// color art, text color, and the scattered doodle stickers around the
+// phone photo — so those bits are branched on `variant` rather than
+// forced into one generic shape.
+interface Tag {
+  label: string;
+  pill: string;
+  width: number;
+}
+
+interface Props {
+  variant: 1 | 2 | 3;
+  index: string; // "01" | "02" | "03"
+  date: string;
+  title: string;
+  description: string;
+  tags: Tag[];
+  top: number;
+}
+
+const { variant, index, date, title, description, tags, top } = Astro.props;
+
+const href = ['/work/oni-cares', '/work/fic-non-fic', '/work/bcl'][variant - 1];
+const tabBg = `/images/stickers/project${variant}-tab-bg.png`;
+const cardBg = `/images/stickers/project${variant}-card-bg.png`;
+const titleColor = variant === 3 ? '#ffffff' : variant === 2 ? '#121212' : '#333333';
+const bodyColor = variant === 3 ? '#ffffff' : '#000000';
+const tagTextColor = variant === 3 ? '#000000' : '#ffffff';
+---
+
+<a href={href} class="card" style={`top:${top}px;--tape-color:${variant === 1 ? '#8fe591' : variant === 2 ? '#f8d3ab' : '#be4f52'};`}>
+  <img src={tabBg} alt="" aria-hidden="true" class="card__tab-bg" />
+
+  <p class:list={['card__tab-label', `card__tab-label--v${variant}`]}>Project {index}</p>
+
+  <img src={cardBg} alt="" aria-hidden="true" class="card__bg" />
+
+  <div class="card__text" style={`color:${bodyColor};`}>
+    <p class="card__date">{date}</p>
+    <p class:list={['card__title', variant !== 3 && 'ink-text']} style={`color:${titleColor};`}>{title}</p>
+    <p class="card__desc">{description}</p>
+    <div class="card__tags">
+      {tags.map((tag) => (
+        <span class="card__tag" style={`width:${tag.width}px;--tag-text:${tagTextColor};`}>
+          <img src={tag.pill} alt="" aria-hidden="true" class="card__tag-pill" />
+          <span class="card__tag-label" style={`color:${tagTextColor};`}>{tag.label}</span>
+        </span>
+      ))}
+      <span class="card__cta" aria-hidden="true"><span class="card__cta-text">View Case Study →</span></span>
+    </div>
+  </div>
+
+  {variant === 1 && (
+    <div class="card__photo-area card__photo-area--1" aria-hidden="true">
+      <div class="card__photo-highlight"></div>
+      <div class="card__photo card__photo--1">
+        <img src="/images/photos/project1-oni-cares-devices.jpg" alt="" class="card__photo-img" />
+      </div>
+      <span class="card__rot card__rot--squiggle1">
+        <img src="/images/stickers/squiggle-a.svg" alt="" class="card__squiggle" />
+      </span>
+      <span class="card__rot card__rot--sticker1">
+        <span class="card__crop card__crop--sticker1"><img src="/images/stickers/project1-sticker-a.png" alt="" class="card__crop-img card__crop-img--sticker1" /></span>
+      </span>
+    </div>
+    <span class="card__rot card__rot--corner1">
+      <span class="card__crop card__crop--corner1"><img src="/images/stickers/project-sticker-corner.png" alt="" class="card__crop-img card__crop-img--corner1" /></span>
+    </span>
+  )}
+
+  {variant === 2 && (
+    <div class="card__photo-area card__photo-area--2" aria-hidden="true">
+      <div class="card__photo card__photo--masked">
+        <img src="/images/photos/project2-ficnonfic-phone.jpg" alt="" class="card__photo-img" />
+      </div>
+      <span class="card__rot card__rot--sticker2">
+        <span class="card__crop card__crop--sticker2"><img src="/images/stickers/project2-sticker-isfj.png" alt="" class="card__crop-img card__crop-img--sticker2" /></span>
+      </span>
+      <span class="card__rot card__rot--tape2">
+        <span class="card__crop card__crop--tape2"><img src="/images/stickers/tape-scrap.png" alt="" class="card__crop-img card__crop-img--tape2" /></span>
+      </span>
+    </div>
+    <span class="card__rot card__rot--corner2">
+      <span class="card__crop card__crop--corner2"><img src="/images/stickers/project2-sticker-a.png" alt="" class="card__crop-img card__crop-img--corner2" /></span>
+    </span>
+  )}
+
+  {variant === 3 && (
+    <div class="card__photo-area card__photo-area--3" aria-hidden="true">
+      <div class="card__photo-highlight card__photo-highlight--white"></div>
+      <div class="card__photo card__photo--3">
+        <img src="/images/photos/project3-bcl-macbook.jpg" alt="" class="card__photo-img" />
+      </div>
+      <span class="card__rot card__rot--squiggle3">
+        <img src="/images/stickers/squiggle-b.svg" alt="" class="card__squiggle" />
+      </span>
+      <span class="card__rot card__rot--sticker3">
+        <img src="/images/stickers/project3-sticker-download.png" alt="" class="card__sticker" />
+      </span>
+    </div>
+    <span class="card__rot card__rot--corner3">
+      <span class="card__crop card__crop--corner3"><img src="/images/stickers/project-sticker-corner.png" alt="" class="card__crop-img card__crop-img--corner3" /></span>
+    </span>
+  )}
+</a>
+
+<style>
+  .card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1064px;
+    height: 583px;
+  }
+  .card__tab-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1064px;
+    height: 582px;
+  }
+  .card__tab-label {
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: 0.64px;
+    white-space: nowrap;
+    color: var(--color-ink);
+  }
+  .card__tab-label--v1 { transform: translateX(calc(-50% - 294px)); }
+  .card__tab-label--v2 { transform: translateX(calc(-50% - 24px)); }
+  .card__tab-label--v3 { transform: translateX(calc(-50% + 273.5px)); color: #fff; }
+
+  .card__bg {
+    position: absolute;
+    left: 0;
+    top: 101px;
+    width: 1064px;
+    height: 482px;
+  }
+
+  .card__text {
+    position: absolute;
+    left: 68px;
+    top: 208px;
+    width: 493px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .card__date {
+    font-family: var(--font-mono);
+    font-size: 20px;
+  }
+  .card__title {
+    font-family: var(--font-display);
+    font-size: 76px;
+    line-height: normal;
+  }
+  .card__desc {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: normal;
+  }
+  .card__tags {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .card__tag {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 50px;
+  }
+  .card__tag-pill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .card__tag-label {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 24px;
+    letter-spacing: 0.48px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .card__rot {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card__sticker,
+  .card__squiggle {
+    display: block;
+    max-width: none;
+  }
+
+  /* Several "removebg" doodle stickers are cropped windows onto a larger
+     source image, not the whole image — mirrors the crop technique used
+     for the nav icon sheet. */
+  .card__crop { position: relative; display: block; overflow: hidden; }
+  .card__crop-img { position: absolute; max-width: none; }
+
+  /* ---- variant 1 ---- */
+  .card__photo-area--1 { position: absolute; inset: 0; }
+  .card__photo-highlight {
+    position: absolute;
+    left: 631px;
+    top: 105px;
+    width: 359px;
+    height: 444px;
+    background: #e4ffe5;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  }
+  .card__photo {
+    position: absolute;
+    background: #939393;
+    overflow: hidden;
+  }
+  .card__photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Figma reveals the device-mockup photo through a phone-screen-shaped
+     mask (node 244:17650) whose position/size resolve to exactly the
+     screen's true rect: outer box (618,144.84,553,369) + mask-position
+     offset (24,-29.422) = (642, 115.42, 338, 404). CSS mask-mode:luminance
+     against that photographic mask renders as a washed-out ghost in the
+     browser (composited very differently than Figma's canvas), so we
+     crop to that same equivalent rectangle directly instead. */
+  .card__photo--1 {
+    left: 642px;
+    top: 115.42px;
+    width: 338px;
+    height: 404px;
+  }
+  .card__rot--squiggle1 { left: 919px; top: 493.42px; width: 100.438px; height: 67.887px; transform: rotate(-27.58deg); }
+  .card__squiggle { width: 100.807px; height: 23.942px; }
+  .card__rot--sticker1 { left: 603.31px; top: 61.34px; width: 112.039px; height: 106.074px; transform: rotate(-15deg); }
+  .card__crop--sticker1 { width: 93.262px; height: 84.826px; }
+  .card__crop-img--sticker1 { width: 145.98px; height: 109.32px; left: -28.24px; top: -15.7px; }
+  .card__rot--corner1 { left: 32px; top: -10.58px; width: 107.606px; height: 106.811px; transform: rotate(-28.66deg); }
+  .card__crop--corner1 { width: 80px; height: 78px; }
+  .card__crop-img--corner1 { width: 401.19px; height: 323px; left: -9.55px; top: -19.3px; }
+
+  /* ---- variant 2 ---- */
+  .card__photo-area--2 { position: absolute; inset: 0; }
+  .card__photo--masked {
+    position: absolute;
+    left: 520px;
+    top: 122.42px;
+    width: 716px;
+    height: 537px;
+    background: none;
+    -webkit-mask-image: url('/images/photos/project2-photo-mask.svg');
+    mask-image: url('/images/photos/project2-photo-mask.svg');
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+    -webkit-mask-size: 359px 444px;
+    mask-size: 359px 444px;
+    -webkit-mask-position: 114.129px -0.422px;
+    mask-position: 114.129px -0.422px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    overflow: hidden;
+  }
+  .card__rot--sticker2 { left: 589px; top: 70px; width: 111.891px; height: 97.497px; transform: rotate(-14.41deg); }
+  .card__crop--sticker2 { width: 96px; height: 76px; }
+  .card__crop-img--sticker2 { width: 139px; height: 139px; left: -17px; top: -20px; }
+  .card__rot--tape2 { left: 927.6px; top: 472px; width: 119.66px; height: 105.999px; transform: rotate(-22.27deg); }
+  .card__crop--tape2 { width: 99px; height: 74px; }
+  .card__crop-img--tape2 { width: 558px; height: 447px; left: -190px; top: -270px; }
+  .card__rot--corner2 { left: 312px; top: -5px; width: 97.277px; height: 90.996px; transform: rotate(-32.34deg); }
+  .card__crop--corner2 { width: 78.356px; height: 58.091px; }
+  .card__crop-img--corner2 { width: 275.6px; height: 183.7px; left: -178.79px; top: -99.53px; }
+
+  /* ---- variant 3 ---- */
+  .card__photo-area--3 { position: absolute; inset: 0; }
+  .card__photo-highlight--white {
+    left: 632px;
+    top: 109px;
+    width: 359px;
+    height: 444px;
+    background: #fff;
+    box-shadow: none;
+  }
+  /* Same reasoning as .card__photo--1: outer box (496,122.42,609,408) +
+     mask-position (146.691,4.235) = the laptop screen's true rect
+     (642.69, 126.66, 338, 404) — crop there directly instead of
+     reproducing the photographic luminance mask, which renders as a
+     washed-out ghost in CSS. */
+  .card__photo--3 {
+    left: 642.69px;
+    top: 126.655px;
+    width: 338px;
+    height: 404px;
+  }
+  .card__rot--squiggle3 { left: 929px; top: 516px; width: 100.438px; height: 67.887px; transform: rotate(-27.58deg); }
+  .card__rot--sticker3 { left: 571px; top: 32px; width: 143.202px; height: 141.795px; transform: rotate(-35.35deg); }
+  .card__rot--sticker3 .card__sticker { width: 105.176px; height: 99.242px; object-fit: cover; }
+  .card__rot--corner3 { left: 610px; top: -11px; width: 99.994px; height: 95.778px; transform: rotate(-19.79deg); }
+  .card__crop--corner3 { width: 80px; height: 73px; }
+  .card__crop-img--corner3 { width: 401.19px; height: 322.11px; left: -162.39px; top: -235.85px; }
+
+  .card__photo-area { pointer-events: none; }
+  .card__tags { width: max-content; }
+  .card__tag { flex-shrink: 0; }
+
+  .card__tags { position: relative; }
+  .card__tag { transition: opacity 160ms ease 160ms; }
+  .card__cta {
+    position: absolute; inset: 0; isolation: isolate;
+    display: grid; place-items: center; color: #fff;
+    font: 24px var(--font-mono); letter-spacing: .6px;
+    opacity: 0; transform: scaleX(.92); pointer-events: none;
+    transition: opacity 160ms ease, transform 320ms ease;
+  }
+  .card__cta::before, .card__cta::after {
+    content: ''; position: absolute; inset: 0; clip-path: polygon(4% 0,100% 0,96% 20%,100% 35%,96% 65%,100% 100%,0 100%,4% 80%,0 65%,4% 45%,0 20%); pointer-events: none;
+  }
+  .card__cta::before {
+    z-index: -2; transform: translate(6px, 4px);
+    background: var(--color-ink) url('/images/textures/noise-black.png') center / 200px 200px;
+  }
+  .card__cta::after {
+    z-index: -1; background: linear-gradient(color-mix(in srgb, var(--color-red) 94%, transparent), color-mix(in srgb, var(--color-red) 94%, transparent)), url('/images/textures/dot-grain.png') center / 190px 127px;
+  }
+  .card__cta-text { opacity: 0; transition: opacity 100ms ease; }
+  .card:is(:hover, :focus-visible) .card__tag { opacity: 0; transition-delay: 0ms; }
+  .card:is(:hover, :focus-visible) .card__cta { opacity: 1; transform: scaleX(1); transition-delay: 100ms; pointer-events: auto; }
+  .card:is(:hover, :focus-visible) .card__cta-text { opacity: 1; transition-delay: 220ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .card__tag, .card__cta, .card__cta-text { transition: none !important; }
+  }
+</style>

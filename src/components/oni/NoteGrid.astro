@@ -1,0 +1,23 @@
+---
+interface Props {
+  items: { title: string; text: string }[];
+  color?: string;
+  metrics?: boolean;
+}
+const { items, color = '#e4ffe5', metrics = false } = Astro.props;
+---
+<div class:list={['notes', { metrics }]} style={`--paper:${color}`}>
+  {items.map(item => <div class="note"><div class="note__paper"><h3>{item.title}</h3><p>{item.text}</p></div></div>)}
+</div>
+<style>
+  .notes { display:grid; grid-template-columns:1fr 1fr; gap:32px 26px; }
+  .note { position:relative; height:136px; isolation:isolate; }
+  .note::before { content:''; position:absolute; inset:8px -7px -12px 7px; background:#121212 url('/images/textures/noise-black.png') repeat; background-size:200px; z-index:-1; }
+  .note__paper { height:100%; background:var(--paper); position:relative; padding:20px 24px; text-align:center; box-shadow:0 0 9px #0002; }
+  .note__paper::before { content:''; position:absolute; inset:0; background:url('/images/textures/dot-grain.png') repeat; background-size:180px 120px; opacity:.02; pointer-events:none; }
+  h3 { position:relative; margin:0 0 15px; font:500 23px/1.2 var(--font-mono); color:#121212; }
+  p { position:relative; font:400 23px/1.18 var(--font-sans); color:#121212; white-space:pre-line; }
+  .metrics .note__paper { display:flex; flex-direction:column; justify-content:center; padding-inline:12px; }
+  .metrics h3 { margin:0; font-size:29px; }
+  .metrics p { font:400 27px/1.25 var(--font-mono); }
+</style>
