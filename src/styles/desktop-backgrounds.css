@@ -1,0 +1,52 @@
+/* Extend only the backgrounds outside the approved desktop canvas.
+   The existing centered artwork, clipping and internal coordinates stay intact. */
+@media (width > 1440px) {
+  .site-surround {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(#fdfdfbd6, #fdfdfbd6), url('/images/textures/paper-grain.png');
+    background-size: auto, 307.2px 204.8px;
+    background-position: 0 0, calc(50% - 566.4px) 0;
+  }
+  .site-surround--home {
+    background-image: linear-gradient(#fdfdfbcc, #fdfdfbcc), url('/images/textures/paper-grain.png');
+  }
+  .site-surround--case-study {
+    background-image: linear-gradient(#fdfdfbcc, #fdfdfbcc), url('/images/textures/paper-grain.png');
+    background-size: auto, 338.202px 225.468px;
+    background-position: 0 0, calc(50% - 550.899px) 0;
+  }
+  .site-surround--home::before,
+  .site-surround--case-study::before {
+    content: ''; position: absolute; inset: 0 0 auto; z-index: -1;
+    pointer-events: none;
+    background: var(--color-hero-teal) url('/images/textures/hero-bg-pattern.png') repeat;
+  }
+  .site-surround--home::before {
+    height: 1067px;
+    background-size: 819.2px 546.8px;
+    background-position: calc(50% - 348.4px) -121px;
+  }
+  .site-surround--case-study::before {
+    height: 820.184px;
+    background-size: 901.872px 601.982px;
+    background-position: calc(50% - 269.064px) 0;
+  }
+  .site-surround--home::after,
+  .site-surround--case-study::after {
+    content: ''; position: absolute; left: 0; right: 0; z-index: -1;
+    pointer-events: none;
+    background-image: url('/images/textures/torn-paper-edge.png');
+    background-repeat: repeat-x;
+  }
+  .site-surround--home::after {
+    top: 756px; height: 454px;
+    background-size: 1790px 1049.7px;
+    background-position: calc(50% + 36.9px) -286.9px;
+  }
+  .site-surround--case-study::after {
+    top: 761.835px; height: 506.422px;
+    background-size: 1970.642px 836.697px;
+    background-position: center -232.294px;
+  }
+}

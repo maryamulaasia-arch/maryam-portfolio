@@ -101,7 +101,7 @@ function installInteractions() {
         members.forEach(member => {
         const opacity = getComputedStyle(member).opacity;
         const animation = member.animate([{opacity:0}, {opacity}], {
-          duration:900, delay:startAt - now,
+          duration:700, delay:startAt - now,
           easing:'ease-out', fill:'backwards',
         });
         if (timelineStart !== null) animation.startTime = timelineStart;

@@ -1,0 +1,67 @@
+<main data-reveal="off" class="mobile-holding" aria-labelledby="mobile-holding-title">
+  <div class="mobile-holding__composition">
+    <div class="mobile-holding__paper">
+      <img class="mobile-holding__tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" />
+      <h1 id="mobile-holding-title" class="ink-text">MOBILE VERSION<br />IN PROGRESS</h1>
+      <p>I’m still putting the small-screen experience together.</p>
+      <p>For the full portfolio experience,<br />hop onto a desktop.</p>
+      <div class="mobile-holding__ribbon">DESKTOP RECOMMENDED ✦</div>
+    </div>
+    <section class="mobile-holding__contact" aria-labelledby="mobile-contact-title">
+      <h2 id="mobile-contact-title">WANT TO GET IN TOUCH?</h2>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maryamulaasia@gmail.com" target="_blank" rel="noopener noreferrer">maryamulaasia@gmail.com</a>
+    </section>
+  </div>
+</main>
+
+<style>
+  .mobile-holding { display: none; }
+  @media (max-width: 767px) {
+    :global(.site-surround) { display: none; }
+    .mobile-holding {
+      width: 100%; min-height: 100svh;
+      display: grid; place-items: center;
+      padding: max(40px, env(safe-area-inset-top)) 20px max(36px, env(safe-area-inset-bottom));
+      background: var(--color-hero-teal) url('/images/textures/hero-bg-pattern.png') center / 819.2px 546.8px;
+      color: var(--color-ink);
+    }
+    .mobile-holding__composition { width: 100%; max-width: 390px; }
+    .mobile-holding__paper {
+      position: relative; isolation: isolate;
+      padding: 34px 18px 26px; text-align: center;
+    }
+    .mobile-holding__paper::before, .mobile-holding__paper::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+    }
+    .mobile-holding__paper::before {
+      z-index: -2; transform: translate(6px, 7px) rotate(1deg);
+      background: var(--color-ink) url('/images/textures/noise-black.png') center / 200px;
+    }
+    .mobile-holding__paper::after {
+      z-index: -1; transform: rotate(-1deg);
+      background: linear-gradient(#fdfdfbcc, #fdfdfbcc), url('/images/textures/paper-grain.png') center / 307.2px 204.8px;
+    }
+    .mobile-holding__tape {
+      position: absolute; width: 88px; height: auto; top: -10px; left: calc(50% - 44px); transform: rotate(-7deg);
+    }
+    h1 { margin: 0 0 24px; font: 400 42px/.98 var(--font-display); letter-spacing: .5px; }
+    p { font: 400 15px/1.65 var(--font-mono); }
+    p + p { margin-top: 20px; }
+    .mobile-holding__ribbon {
+      margin-top: 26px; padding: 13px 8px;
+      background: #8fe591; font: 500 12px/1.4 var(--font-mono); letter-spacing: .3px;
+      clip-path: polygon(4% 0,100% 0,96% 25%,100% 50%,96% 75%,100% 100%,0 100%,4% 75%,0 50%,4% 25%);
+    }
+    .mobile-holding__contact { margin-top: 34px; text-align: center; }
+    h2 { margin: 0 0 12px; color: #fff; font: 400 18px/1.4 var(--font-typewriter); }
+    a {
+      display: flex; justify-content: center; align-items: center;
+      min-height: 52px; padding: 12px 8px; border: 2px solid var(--color-ink);
+      background: linear-gradient(#d03c3aeb, #d03c3aeb), url('/images/textures/dot-grain.png') center / 204.8px 136.55px;
+      background-color: var(--color-red); color: #fff; border-radius: 4px;
+      box-shadow: 4px 4px var(--color-ink); font: 400 14px/1.5 var(--font-mono);
+      overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 3px;
+    }
+    a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+  }
+</style>

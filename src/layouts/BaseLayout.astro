@@ -5,12 +5,15 @@ import '../styles/tokens.css';
 import '../styles/fonts.css';
 import '../styles/global.css';
 import '../styles/interactions.css';
+import '../styles/desktop-backgrounds.css';
+import MobilePlaceholder from '../components/MobilePlaceholder.astro';
 
 interface Props {
   title: string;
   description?: string;
 }
 
+const surface = Astro.url.pathname === '/' ? 'home' : Astro.url.pathname.startsWith('/work/') ? 'case-study' : 'paper';
 const { title, description = 'Maryamul Aasia — Product / UI UX Designer' } = Astro.props;
 ---
 
@@ -24,7 +27,8 @@ const { title, description = 'Maryamul Aasia — Product / UI UX Designer' } = A
     <meta name="description" content={description} />
   </head>
   <body>
-    <slot />
+    <MobilePlaceholder />
+    <div class:list={['site-surround', `site-surround--${surface}`]}><slot /></div>
     <!-- Progressive enhancement shared by current and future portfolio pages. -->
     <script>
       import '../scripts/site-interactions.js';
