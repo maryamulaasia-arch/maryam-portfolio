@@ -1,16 +1,18 @@
 <main data-reveal="off" class="mobile-holding" aria-labelledby="mobile-holding-title">
   <div class="mobile-holding__composition">
-    <div class="mobile-holding__paper">
-      <img class="mobile-holding__tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" />
-      <h1 id="mobile-holding-title" class="ink-text">MOBILE VERSION<br />IN PROGRESS</h1>
-      <p>I’m still putting the small-screen experience together.</p>
-      <p>For the full portfolio experience,<br />hop onto a desktop.</p>
-      <div class="mobile-holding__ribbon">DESKTOP RECOMMENDED ✦</div>
+    <img class="mobile-holding__portrait mobile-holding__portrait--shadow" src="/images/photos/hero-photo-shadow.png" alt="" aria-hidden="true" />
+    <img class="mobile-holding__portrait" src="/images/photos/hero-photo.png" alt="Maryamul Aasia" />
+    <img class="mobile-holding__megaphone" src="/images/megaphone.png" alt="" aria-hidden="true" />
+    <div class="mobile-holding__paper-edge" aria-hidden="true"></div>
+    <div class="mobile-holding__headline">
+      <h1 id="mobile-holding-title">STILL CUTTING,<br />TAPING &amp; RESIZING.</h1>
     </div>
-    <section class="mobile-holding__contact" aria-labelledby="mobile-contact-title">
-      <h2 id="mobile-contact-title">WANT TO GET IN TOUCH?</h2>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maryamulaasia@gmail.com" target="_blank" rel="noopener noreferrer">maryamulaasia@gmail.com</a>
-    </section>
+    <p class="mobile-holding__message">The mobile version is currently<br />under construction.</p>
+    <p class="mobile-holding__desktop">Hop onto a desktop for the full<br />portfolio experience.</p>
+    <a class="mobile-holding__contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=maryamulaasia@gmail.com" target="_blank" rel="noopener noreferrer">
+      <span>Contact me</span><img class="mobile-holding__arrow" src="/images/icons/arrow-right.svg" alt="" aria-hidden="true" />
+      <img class="mobile-holding__underline" src="/images/icons/underline-cta.svg" alt="" aria-hidden="true" />
+    </a>
   </div>
 </main>
 
@@ -18,50 +20,26 @@
   .mobile-holding { display: none; }
   @media (max-width: 767px) {
     :global(.site-surround) { display: none; }
-    .mobile-holding {
-      width: 100%; min-height: 100svh;
-      display: grid; place-items: center;
-      padding: max(40px, env(safe-area-inset-top)) 20px max(36px, env(safe-area-inset-bottom));
-      background: var(--color-hero-teal) url('/images/textures/hero-bg-pattern.png') center / 819.2px 546.8px;
-      color: var(--color-ink);
+    .mobile-holding { display: block; width: 100%; min-height: 100svh; container-type: inline-size; background: #f4f4f4; overflow-x: clip; }
+    .mobile-holding__composition {
+      position: relative; width: 100%; height: 216.4103cqw;
+      background: var(--color-hero-teal) url('/images/textures/hero-bg-pattern.png') 0 0 / 210.052cqw 140.206cqw;
+      overflow: hidden; isolation: isolate;
     }
-    .mobile-holding__composition { width: 100%; max-width: 390px; }
-    .mobile-holding__paper {
-      position: relative; isolation: isolate;
-      padding: 34px 18px 26px; text-align: center;
-    }
-    .mobile-holding__paper::before, .mobile-holding__paper::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-    }
-    .mobile-holding__paper::before {
-      z-index: -2; transform: translate(6px, 7px) rotate(1deg);
-      background: var(--color-ink) url('/images/textures/noise-black.png') center / 200px;
-    }
-    .mobile-holding__paper::after {
-      z-index: -1; transform: rotate(-1deg);
-      background: linear-gradient(#fdfdfbcc, #fdfdfbcc), url('/images/textures/paper-grain.png') center / 307.2px 204.8px;
-    }
-    .mobile-holding__tape {
-      position: absolute; width: 88px; height: auto; top: -10px; left: calc(50% - 44px); transform: rotate(-7deg);
-    }
-    h1 { margin: 0 0 24px; font: 400 42px/.98 var(--font-display); letter-spacing: .5px; }
-    p { font: 400 15px/1.65 var(--font-mono); }
-    p + p { margin-top: 20px; }
-    .mobile-holding__ribbon {
-      margin-top: 26px; padding: 13px 8px;
-      background: #8fe591; font: 500 12px/1.4 var(--font-mono); letter-spacing: .3px;
-      clip-path: polygon(4% 0,100% 0,96% 25%,100% 50%,96% 75%,100% 100%,0 100%,4% 75%,0 50%,4% 25%);
-    }
-    .mobile-holding__contact { margin-top: 34px; text-align: center; }
-    h2 { margin: 0 0 12px; color: #fff; font: 400 18px/1.4 var(--font-typewriter); }
-    a {
-      display: flex; justify-content: center; align-items: center;
-      min-height: 52px; padding: 12px 8px; border: 2px solid var(--color-ink);
-      background: linear-gradient(#d03c3aeb, #d03c3aeb), url('/images/textures/dot-grain.png') center / 204.8px 136.55px;
-      background-color: var(--color-red); color: #fff; border-radius: 4px;
-      box-shadow: 4px 4px var(--color-ink); font: 400 14px/1.5 var(--font-mono);
-      overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 3px;
-    }
-    a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+    .mobile-holding__portrait { position: absolute; left: 12.05cqw; top: 13.85cqw; width: 79.36cqw; height: auto; }
+    .mobile-holding__portrait--shadow { left: 14.23cqw; top: 15.9cqw; mix-blend-mode: multiply; }
+    .mobile-holding__megaphone { position: absolute; left: 62.69cqw; top: 24.87cqw; width: 25.64cqw; height: auto; }
+    .mobile-holding__paper-edge { position: absolute; left: -2cqw; top: 150.9cqw; width: 104cqw; height: 90cqw; background: url('/images/textures/torn-paper-edge.png') center -58cqw / 200cqw 200cqw no-repeat; }
+    .mobile-holding__headline { position: absolute; left: 4.87cqw; top: 102.82cqw; width: 88.72cqw; height: 30cqw; isolation: isolate; border: .26cqw solid #333; display: grid; place-items: center; background: #fbd3a9 url('/images/textures/dot-grain-tan.png') center / cover; }
+    .mobile-holding__headline::before { content: ''; position: absolute; inset: 1.28cqw -1.79cqw -2.18cqw 2.56cqw; z-index: -2; background: var(--color-ink) url('/images/textures/noise-black.png') center / 25.64cqw; }
+    .mobile-holding__headline::after { content: ''; position: absolute; inset: 0; z-index: -1; background: inherit; }
+    h1 { margin: 0; font: 500 6.41cqw/1.24 var(--font-mono); letter-spacing: .128cqw; text-align: center; color: #121212; }
+    .mobile-holding__message, .mobile-holding__desktop { position: absolute; left: 15.64cqw; margin: 0; font: 400 4.36cqw/1.12 var(--font-sans); color: #222; white-space: nowrap; }
+    .mobile-holding__message { top: 141.15cqw; }
+    .mobile-holding__desktop { top: 155.77cqw; }
+    .mobile-holding__contact { position: absolute; left: 22.82cqw; top: 172.82cqw; width: 54.36cqw; height: 18.2cqw; border: .51cqw solid #000; border-radius: 10cqw; box-shadow: 0 1.03cqw #000; display: flex; align-items: center; justify-content: center; gap: 2.56cqw; color: #fff; font: 400 6.41cqw/1 var(--font-mono); background: linear-gradient(#d03c3acc,#d03c3acc), url('/images/textures/dot-grain.png') center / 26.26cqw 17.51cqw; background-color: var(--color-red); }
+    .mobile-holding__arrow { width: 5.38cqw; height: auto; }
+    .mobile-holding__underline { position: absolute; left: 11.28cqw; bottom: 3.08cqw; width: 27.44cqw; height: auto; }
+    .mobile-holding__contact:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
   }
 </style>
