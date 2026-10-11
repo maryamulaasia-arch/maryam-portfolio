@@ -133,6 +133,7 @@ function installInteractions() {
       const left = nav.getBoundingClientRect().left;
       const scale = canvas.getBoundingClientRect().width / canvas.offsetWidth;
       nav.style.setProperty('--scroll-nav-left',`${left / scale}px`);
+      nav.style.setProperty('--scroll-nav-width',`${window.innerWidth / scale}px`);
       if (state) nav.dataset.scrollNav = state;
     }
   }

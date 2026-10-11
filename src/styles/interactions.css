@@ -24,10 +24,10 @@ body .nav[data-scroll-nav='visible'][data-scroll-nav-glass='true'] > a {
 }
 body .nav[data-scroll-nav='visible'][data-scroll-nav-glass='true']::before {
   content:'';
-  position:fixed;
+  position:absolute;
   top:0;
-  left:0;
-  width:100vw;
+  left:calc(-1 * var(--scroll-nav-left));
+  width:var(--scroll-nav-width);
   height:100px;
   z-index:-1;
   pointer-events:none;
