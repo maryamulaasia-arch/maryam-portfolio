@@ -1,10 +1,10 @@
-// Opacity-only reveals keep every existing transform and collage offset intact.
+// The independent translate property preserves every existing collage transform.
 // Future compositions can opt in with data-reveal / data-reveal-group, or opt
 // out with data-reveal="off". Semantic case-study headings/images work by default.
 const revealSelectors = [
   '[data-reveal]:not([data-reveal="off"])', '[data-reveal-group] > *',
   'main section > :is(h1,h2,h3,p,blockquote,figure,img)',
-  '.section-heading', '.landing > .card', '.wcard', '.stamp', '.note', '.insight',
+  '.section-heading', '.landing > .card', '.card-mobile', '.wcard', '.stamp', '.note', '.insight',
   '.landing__tagline', '.work-page__tagline', '.about-page__tagline',
   '.hero__photo', '.hero__info-card', '.hero__cta-wrap',
   '.about__tagline', '.about__collage',
@@ -24,6 +24,7 @@ function installInteractions() {
   // Navigation is installed independently below.
   const isCaseStudy = /^\/work\/[^/]+/.test(window.location.pathname);
   const candidates = (isCaseStudy ? [] : [...document.querySelectorAll(revealSelectors)])
+    .filter(el => el.getClientRects().length && getComputedStyle(el).display !== 'none')
     .filter(el => !el.closest('nav, [data-reveal="off"], .hero, [data-hero]'))
     .filter(el => !el.matches('.work-page__heading, .work-page__tagline, .about-page__heading, .about-page__tagline, .about-page__card--intro'));
   const candidateSet = new Set(candidates);
@@ -35,17 +36,7 @@ function installInteractions() {
     }
     return true;
   });
-  // Synchronize existing Works cards by their visual row without inserting
-  // wrappers or changing the absolute-positioned collage layout.
-  const rows = [];
   const rowMembers = new Map();
-  for (const el of targets.filter(el => el.matches('.work-page .wcard'))) {
-    const top = el.getBoundingClientRect().top;
-    let row = rows.find(row => Math.abs(row.top - top) < 8);
-    if (!row) { row = { top, members:[] }; rows.push(row); }
-    row.members.push(el);
-  }
-  rows.forEach(row => row.members.forEach(el => rowMembers.set(el,row.members)));
   // A heading and its immediate introduction share one start time, without
   // wrapping or repositioning either element.
   for (const heading of targets.filter(el => el.matches('.section-heading, h1, h2, h3'))) {
@@ -89,19 +80,19 @@ function installInteractions() {
         const members = rowMembers.get(el) || [el];
         members.forEach(member => { observer.unobserve(member); revealed.add(member); });
         if (motion.matches || typeof el.animate !== 'function') return;
-        // Keep related elements 1.5 seconds apart even when they enter in
+        // Keep related compositions 140ms apart even when they enter in
         // separate observer callbacks. Unrelated sections have their own queue.
         const group = el.closest('[data-reveal-group], section, main') || el.parentElement;
         const now = performance.now();
         const startAt = Math.max(now, nextRevealByGroup.get(group) || 0);
-        nextRevealByGroup.set(group, startAt + 1500);
+        nextRevealByGroup.set(group, startAt + 140);
         // A finite Web Animation cannot leave content permanently hidden if
         // subsequent JS fails. No inline opacity, transform, or fill-forwards.
         const timelineStart = document.timeline.currentTime;
         members.forEach(member => {
         const opacity = getComputedStyle(member).opacity;
-        const animation = member.animate([{opacity:0}, {opacity}], {
-          duration:700, delay:startAt - now,
+        const animation = member.animate([{opacity:0, translate:'0 18px'}, {opacity, translate:'0 0'}], {
+          duration:1000, delay:startAt - now,
           easing:'ease-out', fill:'backwards',
         });
         if (timelineStart !== null) animation.startTime = timelineStart;
@@ -116,15 +107,18 @@ function installInteractions() {
   }
 
   const nav = document.querySelector('.nav');
+  const mobileNav = document.querySelector('.mobile-nav');
   const canvas = nav?.parentElement;
-  const navOffset = nav && canvas
-    ? nav.getBoundingClientRect().left - canvas.getBoundingClientRect().left : 0;
   let previousY = Math.max(0,window.scrollY);
   let direction = 0;
   let distance = 0;
   let frame = 0;
 
   function showNav() {
+    if (mobileNav) {
+      mobileNav.dataset.scrollNav = 'visible';
+      mobileNav.dataset.scrollNavGlass = window.scrollY > 120 ? 'true' : 'false';
+    }
     if (nav) {
       nav.dataset.scrollNav = 'visible';
       nav.dataset.scrollNavGlass = window.scrollY > 120 ? 'true' : 'false';
@@ -132,7 +126,14 @@ function installInteractions() {
   }
   function positionNav() {
     if (nav && canvas) {
-      nav.style.setProperty('--scroll-nav-left',`${canvas.getBoundingClientRect().left + navOffset}px`);
+      // Measure the natural slot again when crossing responsive breakpoints.
+      // Fixed offsets are expressed in the canvas's unscaled CSS coordinates.
+      const state = nav.dataset.scrollNav;
+      delete nav.dataset.scrollNav;
+      const left = nav.getBoundingClientRect().left;
+      const scale = canvas.getBoundingClientRect().width / canvas.offsetWidth;
+      nav.style.setProperty('--scroll-nav-left',`${left / scale}px`);
+      if (state) nav.dataset.scrollNav = state;
     }
   }
   function updateScroll() {
@@ -140,7 +141,7 @@ function installInteractions() {
     const y = Math.max(0,window.scrollY);
     const delta = y - previousY;
     previousY = y;
-    if (y <= 120 || nav?.contains(document.activeElement)) {
+    if (y <= 120 || nav?.contains(document.activeElement) || mobileNav?.contains(document.activeElement)) {
       showNav(); distance = 0; direction = 0; return;
     }
     if (!delta) return;
@@ -150,6 +151,7 @@ function installInteractions() {
     if (distance >= (direction > 0 ? 18 : 12)) {
       if (direction > 0) {
         if (nav) nav.dataset.scrollNav = 'hidden';
+        if (mobileNav) mobileNav.dataset.scrollNav = 'hidden';
       } else showNav();
       distance = 0;
     }
@@ -159,7 +161,7 @@ function installInteractions() {
   }
   function onFocus(event) {
     // Keyboard users never have to wait for a hidden navigation or card.
-    if (nav?.contains(event.target)) showNav();
+    if (nav?.contains(event.target) || mobileNav?.contains(event.target)) showNav();
     animations.forEach((animation,el) => {
       if (el.contains(event.target)) stopAnimation(el);
     });

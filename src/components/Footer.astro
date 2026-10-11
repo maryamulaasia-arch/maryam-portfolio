@@ -47,6 +47,24 @@ const socials = [
   </ul>
 </footer>
 
+<div class="mobile-footer" data-reveal>
+  <footer class="mobile-ticket" aria-label="Contact and social links">
+    <img class="mobile-ticket__shadow" src="/images/stickers/ticket-bg-shadow.svg" alt="" />
+    <img class="mobile-ticket__paper" src="/images/stickers/ticket-bg-front.png" alt="" />
+    <div class="mobile-ticket__left">
+      <p class="mobile-ticket__heading">Your next designer</p>
+      <p class="mobile-ticket__name">Maryamul Aasia</p>
+      <p>Product / UI UX Designer</p>
+      <div class="mobile-ticket__status"><p>Status: OPEN TO OPPORTUNITIES</p><p>Admit one: GOOD IDEAS</p><p>Ticket no: MA -2026</p></div>
+    </div>
+    <div class="mobile-ticket__right">
+      <p class="mobile-ticket__heading">Lets Connect</p>
+      {socials.map(s => <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}<img src="/images/icons/export.svg" alt="" /></a>)}
+      <p>Open for the<br />next chapter</p>
+    </div>
+  </footer>
+</div>
+
 <style>
   .footer {
     position: absolute;

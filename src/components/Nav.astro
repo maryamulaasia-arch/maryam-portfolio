@@ -94,7 +94,7 @@ const items = [
     )
   )}
 
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maryamulaasia@gmail.com" target="_blank" rel="noopener noreferrer" class="nav__pill nav__pill--contact">
+  <a href="https://www.linkedin.com/in/maryamul-aasia/" target="_blank" rel="noopener noreferrer" class="nav__pill nav__pill--contact">
     <span class="nav__pill-shadow nav__pill-shadow--contact" aria-hidden="true"></span>
     <span class="nav__pill-body--contact">
       <span class="nav__pill-fill" aria-hidden="true"></span>
@@ -105,6 +105,52 @@ const items = [
     <img src="/images/icons/underline-a.svg" alt="" aria-hidden="true" class="nav__underline nav__underline--contact" />
   </a>
 </nav>
+
+<div class="mobile-nav">
+  <button class="mobile-nav__toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button>
+  <a class="mobile-pill" href="https://www.linkedin.com/in/maryamul-aasia/" target="_blank" rel="noopener noreferrer">Contact me →</a>
+</div>
+<dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu">
+  <button class="mobile-menu__close" aria-label="Close menu">×</button>
+  <div class="mobile-menu__links">
+    {items.map(item => <a href={item.href} aria-current={item.key === current ? 'page' : undefined}>
+      <span class="mobile-menu__icon" style={`width:${item.plainIconBox.w}px;height:36px;`}><img src="/images/logos/nav-icon-sheet.png" alt="" style={`height:${item.plainIcon.h};left:${item.plainIcon.l};top:${item.plainIcon.t};width:${item.plainIcon.w};`} /></span>
+      {item.label}
+    </a>)}
+    <a class="mobile-pill" href="https://drive.google.com/file/d/1FnZK4SDrAr0LK4IwrWpYzXZB4NmC5Ylv/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume →</a>
+  </div>
+  <div class="mobile-menu__bottom">
+    <p><span></span>Product / UI UX Designer</p>
+    <div class="mobile-menu__socials">
+      <a href="https://www.behance.net/maryamulaasia1" target="_blank" rel="noopener noreferrer" aria-label="Behance">Bē</a>
+      <a href="https://www.instagram.com/aasia_design?stkn=MW5wc2lndzViaWtlMw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".7"/></svg></a>
+      <span aria-label="Dribbble link pending" class="mobile-menu__social-pending"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M7 5c5 5 8 9 10 14M4 11c7 1 12-2 15-5M6 18c3-6 7-8 14-6"/></svg></span>
+      <a href="https://www.linkedin.com/in/maryamul-aasia/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.mobile-nav__toggle');
+  const menu = document.querySelector<HTMLDialogElement>('.mobile-menu');
+  if (toggle && menu) {
+    let previousOverflow = '';
+    toggle.addEventListener('click', () => {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      menu.showModal();
+      toggle.setAttribute('aria-expanded', 'true');
+    });
+    menu.querySelector('.mobile-menu__close')?.addEventListener('click', () => menu.close());
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.close()));
+    menu.addEventListener('close', () => {
+      document.body.style.overflow = previousOverflow;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    });
+    window.matchMedia('(min-width:768px)').addEventListener('change', event => { if (event.matches && menu.open) menu.close(); });
+  }
+</script>
 
 <style>
   .nav {

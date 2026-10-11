@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResponsiveScreens from '../../components/ResponsiveScreens.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import WorkCard from '../../components/WorkCard.astro';
@@ -35,7 +36,7 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
       <section class="fic-hero" aria-labelledby="fic-title">
         <img class="fic-hero-device" src={`${assets}hero.png`} width="1117" height="1092" alt="Fic Non-Fic reading app displayed on a phone" />
         <h1 id="fic-title" class="fic-title"><span class="fic-backed"><b class="fic-paper"><span class="ink-text">FIC</span></b></span><span class="fic-backed"><b class="fic-paper"><span class="ink-text">NON-FIC</span></b></span></h1>
-        <div class="fic-hero-label"><span class="fic-label-backing" aria-hidden="true"></span><span class="fic-label-paper" aria-hidden="true"></span><p>UI/ Product Design<br />Consumer App</p></div>
+        <div class="fic-hero-label"><span class="fic-label-backing" aria-hidden="true"></span><span class="fic-label-paper" aria-hidden="true"></span><p>UI/ Product Design<br />{' '}Consumer App</p></div>
         <div class="fic-facts fic-backed"><div class="fic-paper">
           <p>Community library app to borrow, meet &amp; read</p>
           <dl>{[['Product', 'Fic\nNon-fic'], ['Domain', 'Community\napp'], ['Platform', 'Mobile\nApp'], ['Role', 'UI UX\nDesigner']].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
@@ -44,7 +45,7 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
       <section class="fic-about" aria-labelledby="fic-about-heading">
         <h2 id="fic-about-heading" class="ink-text">ABOUT FIC NON FIC</h2>
         <div class="fic-about-row">
-          <div class="fic-about-copy"><h3>Designing a Connected Reading<br />Ecosystem for Modern Readers</h3>
+          <div class="fic-about-copy"><h3>Designing a Connected Reading<br />{' '}Ecosystem for Modern Readers</h3>
             <p>FicNonFic is a nonprofit platform helping communities discover, borrow, and enjoy books through libraries and reading communities. Starting with Read, Borrow &amp; Meet, I expanded the product into mobile-first journeys within the existing design system.</p>
             <p>Reading journeys are fragmented, with discovery, borrowing, and connections happening across platforms. FicNonFic brings them together in one place.</p>
           </div>
@@ -55,17 +56,17 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
         <h2 id="fic-problem-heading" class="ink-text">PROBLEM STATEMENT</h2>
         <div class="fic-copy"><p>Readers often switch between multiple platforms to discover, borrow, track, and discuss books, creating a fragmented reading experience.</p><p><strong>Fragmented journeys → repeated effort, disconnected experiences, and limited reading continuity.</strong></p></div>
         <div class="fic-problem-notes"><NoteGrid items={problems} color="#efdcff" /></div>
-        <blockquote class="fic-quote fic-graph"><p>“I can find books anywhere. What’s missing is one place<br />to find the right book, borrow it, and find people who<br />want to read it with me.”</p><cite>— User Insight</cite><span class="fic-sticker fic-sticker--list" aria-hidden="true"></span><span class="fic-sticker fic-sticker--chat" aria-hidden="true"></span></blockquote>
+        <blockquote class="fic-quote fic-graph"><p>“I can find books anywhere. What’s missing is one place<br />{' '}to find the right book, borrow it, and find people who<br />{' '}want to read it with me.”</p><cite>— User Insight</cite><span class="fic-sticker fic-sticker--list" aria-hidden="true"></span><span class="fic-sticker fic-sticker--chat" aria-hidden="true"></span></blockquote>
       </section>
       <section class="fic-role" aria-labelledby="fic-role-heading">
         <h2 id="fic-role-heading" class="ink-text">MY ROLE</h2>
         <p class="fic-copy">I expanded the existing Read, Borrow &amp; Meet experience through research, mobile-first flows, and new high-fidelity features.</p>
         <div class="fic-role-notes"><NoteGrid items={roles} /></div>
-        <div class="fic-ribbons"><span>USER-CENTRED<br />THINKING</span><span>COLLABORATION</span><span>PROBLEM SOLVING</span></div>
+        <div class="fic-ribbons"><span>USER-CENTRED<br />{' '}THINKING</span><span>COLLABORATION</span><span>PROBLEM SOLVING</span></div>
       </section>
       <section class="fic-goals" aria-labelledby="fic-goals-heading">
         <h2 id="fic-goals-heading" class="ink-text">GOALS</h2>
-        <div class="fic-copy"><p>The goal was to create a connected, mobile-first reading experience<br />that brings discovery, borrowing, reading, and community into one<br />journey.</p><p>I simplified key flows, expanded the product beyond Read, Borrow &amp; Meet, and extended the existing design system across new features.</p></div>
+        <div class="fic-copy"><p>The goal was to create a connected, mobile-first reading experience<br />{' '}that brings discovery, borrowing, reading, and community into one<br />{' '}journey.</p><p>I simplified key flows, expanded the product beyond Read, Borrow &amp; Meet, and extended the existing design system across new features.</p></div>
       </section>
       <section class="fic-research" aria-labelledby="fic-research-heading">
         <h2 id="fic-research-heading" class="ink-text">RESEARCH</h2>
@@ -83,9 +84,9 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
         <div class="fic-direction-cards">
           <div class="fic-graph fic-direction-card"><h3>CLIENT BRIEF</h3><p>Web application</p><img class="fic-corner-tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" /></div>
           <span class="fic-direction-arrow" aria-hidden="true">⟶</span>
-          <div class="fic-graph fic-direction-card fic-direction-card--insight"><h3>RESEARCH INSIGHT</h3><p>97% mobile usage<br />among 15 to 29 year olds</p><small>(Press Information Bureau GOI 2025)</small><img class="fic-top-tape" src="/images/stickers/stamp-tape.svg" alt="" aria-hidden="true" /></div>
+          <div class="fic-graph fic-direction-card fic-direction-card--insight"><h3>RESEARCH INSIGHT</h3><p>97% mobile usage<br />{' '}among 15 to 29 year olds</p><small>(Press Information Bureau GOI 2025)</small><img class="fic-top-tape" src="/images/stickers/stamp-tape.svg" alt="" aria-hidden="true" /></div>
           <span class="fic-direction-arrow" aria-hidden="true">⟶</span>
-          <div class="fic-graph fic-direction-card fic-direction-card--decision"><h3>DESIGN DECISION</h3><p>Mobile-first<br />experience</p><img class="fic-corner-tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" /></div>
+          <div class="fic-graph fic-direction-card fic-direction-card--decision"><h3>DESIGN DECISION</h3><p>Mobile-first<br />{' '}experience</p><img class="fic-corner-tape" src="/images/stickers/squiggle-a.svg" alt="" aria-hidden="true" /></div>
         </div>
       </section>
       <section class="fic-architecture" aria-labelledby="fic-architecture-heading">
@@ -97,7 +98,7 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
         <p class="fic-copy">Royal Purple, Outfit, and glass morphism create a clear, approachable, and distinctive reading experience.</p>
         <div class="fic-swatches">{colors.map((color,i) => <div class="fic-backed" style={`--paper:${color}`}><div class:list={['fic-paper', { 'fic-swatch-light-text': i === 0 || i === 3 }]}><span>{color}</span></div></div>)}</div>
         <div class="fic-specimen" aria-label="Outfit typography specimen">
-          <div class="fic-specimen-copy"><div class="fic-weights"><strong class="ink-text">Outfit</strong><span class="ink-text">Bold</span><span class="ink-text">Regular</span><span class="ink-text">Light</span></div><p class="ink-text">Aa Bb Cc Dd Ee Ff Hh Ii Jj<br />Kk Ll Mm Nn Oo Pp Qq Rr<br />Ss Tt Uu Vv Ww Xx Yy Zz</p></div><span class="fic-specimen-aa ink-text">Aa</span>
+          <div class="fic-specimen-copy"><div class="fic-weights"><strong class="ink-text">Outfit</strong><span class="ink-text">Bold</span><span class="ink-text">Regular</span><span class="ink-text">Light</span></div><p class="ink-text">Aa Bb Cc Dd Ee Ff Hh Ii Jj<br />{' '}Kk Ll Mm Nn Oo Pp Qq Rr<br />{' '}Ss Tt Uu Vv Ww Xx Yy Zz</p></div><span class="fic-specimen-aa ink-text">Aa</span>
         </div>
       </section>
       <section class="fic-ui" aria-labelledby="fic-ui-heading">
@@ -107,9 +108,9 @@ const colors = ['#7C3AED', '#C1A0FF', '#FFFFFF', '#333333'];
         <img class="fic-home-screen" src={`${assets}Home screen.png`} width="1234" height="2545" alt="Home screen with library banner, genre filters, newly added books, and reading navigation" />
         <h3 id="fic-read-heading">Read &amp; Meet Screens</h3>
         <div class="fic-copy"><p>The Meet screen combines book clubs, events, challenges, and community activities to help readers connect around books.</p><p>The Read screen combines book discovery, reading progress, challenges, and activities to keep readers engaged throughout their journey.</p></div>
-        <img class="fic-read-screens" src={`${assets}reed and meet.png`} width="1262" height="1273" alt="Meet screen with book clubs and events alongside Read screen with reading progress, challenges, and the to-be-read shelf" />
+        <ResponsiveScreens class="fic-read-screens" src={`${assets}reed and meet.png`} width={1262} height={1273} alt="Meet and Read screens" crops={[[0,0,631,1273],[631,0,631,1273]]} />
         <h3 id="fic-other-heading">Other Screens</h3>
-        <img class="fic-other-screens" src={`${assets}other.png`} width="1907" height="1274" alt="Book details and borrowing, adding reading progress, and reader profile screens" />
+        <ResponsiveScreens class="fic-other-screens" src={`${assets}other.png`} width={1907} height={1274} alt="Book details, reading progress, and reader profile screens" crops={[[0,0,636,1274],[636,0,636,1274],[1272,0,635,1274]]} />
       </section>
       <section class="fic-impact" aria-labelledby="fic-impact-heading">
         <h2 id="fic-impact-heading" class="ink-text">IMPACT</h2>

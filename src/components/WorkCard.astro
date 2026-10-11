@@ -58,7 +58,7 @@ const FOLDER =
   </div>
 
   <h3 class="wcard__title ink-text">{title}</h3>
-  <p class="wcard__desc">{description.map((line, i) => (<>{i > 0 && <br />}{line}</>))}</p>
+  <p class="wcard__desc">{description.map((line, i) => (<>{i > 0 && <><br />{' '}</>}{line}</>))}</p>
   <div class="wcard__tags">
     {tags.map((t) => (
       <span class:list={['wcard__tag', lightText && 'wcard__tag--light']}><span class="wcard__tag-label">{t}</span></span>

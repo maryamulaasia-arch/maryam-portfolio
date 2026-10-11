@@ -1,0 +1,13 @@
+---
+interface Props {
+  src:string; alt:string; width:number; height:number; class:string;
+  crops:[number,number,number,number][];
+}
+const {src,alt,width,height,class:className,crops}=Astro.props;
+---
+<img class={className} src={src} alt={alt} width={width} height={height} data-combined-screens />
+<div class="mobile-ui-stack" aria-label={alt}>
+  {crops.map(([x,y,w,h],i)=><figure style={`aspect-ratio:${w}/${h};`}>
+    <img src={src} alt={`${alt} — screen ${i+1}`} loading="lazy" style={`--screen-width:${width/w*100}%;--screen-height:${height/h*100}%;left:${-x/w*100}%;top:${-y/h*100}%;`} />
+  </figure>)}
+</div>

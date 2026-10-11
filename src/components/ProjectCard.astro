@@ -1,4 +1,5 @@
 ---
+import WorkCard from './WorkCard.astro';
 // One "folder" project card. The three landing-page instances share the
 // same folder-tab / photo-mount / stacked-paper structure but differ in
 // color art, text color, and the scattered doodle stickers around the
@@ -28,8 +29,12 @@ const cardBg = `/images/stickers/project${variant}-card-bg.png`;
 const titleColor = variant === 3 ? '#ffffff' : variant === 2 ? '#121212' : '#333333';
 const bodyColor = variant === 3 ? '#ffffff' : '#000000';
 const tagTextColor = variant === 3 ? '#000000' : '#ffffff';
+const mobilePhotos = ['/images/photos/project1-oni-cares-devices.jpg', '/images/photos/project2-ficnonfic-phone.jpg', '/images/photos/project3-bcl-macbook.jpg'];
 ---
 
+<div class="card-mobile" data-reveal>
+  <WorkCard interactive href={href} color={variant === 1 ? '#8fe591' : variant === 2 ? '#f8d3ab' : '#be4f52'} lightText={variant === 3} date={date} title={title} description={[description]} tags={tags.map(tag => tag.label)} image={mobilePhotos[variant - 1]} />
+</div>
 <a href={href} class="card" style={`top:${top}px;--tape-color:${variant === 1 ? '#8fe591' : variant === 2 ? '#f8d3ab' : '#be4f52'};`}>
   <img src={tabBg} alt="" aria-hidden="true" class="card__tab-bg" />
 
@@ -107,6 +112,7 @@ const tagTextColor = variant === 3 ? '#000000' : '#ffffff';
 </a>
 
 <style>
+  .card-mobile { display:none; }
   .card {
     position: absolute;
     left: 50%;

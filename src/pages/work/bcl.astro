@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResponsiveScreens from '../../components/ResponsiveScreens.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import WorkCard from '../../components/WorkCard.astro';
@@ -72,13 +73,13 @@ const impact = [
       <section class="bcl-hero" aria-labelledby="bcl-title">
         <img class="bcl-hero-device" src={`${assets}hero.png`} width="980" height="883" alt="BCL AI-powered coaching platform on a desktop computer" />
         <h1 id="bcl-title" class="bcl-title bcl-backed"><span class="bcl-paper"><span class="ink-text">BCL</span></span></h1>
-        <div class="bcl-hero-label" data-reveal><span class="bcl-label-backing" aria-hidden="true"></span><span class="bcl-label-paper" aria-hidden="true"></span><p>UX Design<br />B2B SAAS</p></div>
+        <div class="bcl-hero-label" data-reveal><span class="bcl-label-backing" aria-hidden="true"></span><span class="bcl-label-paper" aria-hidden="true"></span><p>UX Design<br />{' '}B2B SAAS</p></div>
         <div class="bcl-facts bcl-backed" data-reveal><div class="bcl-paper"><p>AI-Powered Career Coaching fro Profesionals</p><dl>{[['Product','BCL'],['Domain','B2B\nHR TECH'],['Platform','Web\nApp'],['Role','UX\nDesigner']].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div></div>
       </section>
       <section class="bcl-about" aria-labelledby="bcl-about-heading">
         <h2 id="bcl-about-heading" class="ink-text">ABOUT BCL</h2>
         <div class="bcl-about-row">
-          <div class="bcl-about-copy" data-reveal><h3>Designing an AI Career Coach for<br />Meaningful Career Growth</h3><p>Better Corporate Life (BCL) is an AI-powered career coaching platform that helps professionals understand their current career identity, define where they want to go, and navigate the gap between the two through personalized guidance.</p><p>Your career is more than your current job title. BCL helps you identify where you are to where you want to be.</p><div class="bcl-tags"><span>Conversational AI</span><span>Career Development</span></div></div>
+          <div class="bcl-about-copy" data-reveal><h3>Designing an AI Career Coach for<br />{' '}Meaningful Career Growth</h3><p>Better Corporate Life (BCL) is an AI-powered career coaching platform that helps professionals understand their current career identity, define where they want to go, and navigate the gap between the two through personalized guidance.</p><p>Your career is more than your current job title. BCL helps you identify where you are to where you want to be.</p><div class="bcl-tags"><span>Conversational AI</span><span>Career Development</span></div></div>
           <div class="bcl-about-photo" data-reveal><PhotoMount src={`${assets}about.png`} alt="Ladders connect steps leading to a chess king, illustrating career growth" color="#fff" /></div>
         </div>
       </section>
@@ -87,10 +88,10 @@ const impact = [
         <img class="bcl-problem-screen" src={`${assets}problem.png`} width="1394" height="1236" alt="The original Stocai coaching home screen with multiple entry points" />
         <div class="bcl-copy" data-reveal><p>Users wanted a coach that understood who they were before offering advice, but a blank chat and generic responses made it difficult to build trust.</p><p><strong>The challenge was circular: personalization required context, but sharing context required trust. Solving disclosure became the key to making the AI genuinely useful.</strong></p></div>
         <h3 class="bcl-subheading">Goals</h3><div class="bcl-notes"><NoteGrid items={goals} color="#efdcff" /></div>
-        <blockquote class="bcl-quote bcl-graph"><p>"I know I want something to change. I just can't say<br />what, or where to start."</p><cite>— User Insight</cite><span class="bcl-sticker bcl-sticker--target" aria-hidden="true"></span><span class="bcl-sticker bcl-sticker--chat" aria-hidden="true"></span></blockquote>
+        <blockquote class="bcl-quote bcl-graph"><p>"I know I want something to change. I just can't say<br />{' '}what, or where to start."</p><cite>— User Insight</cite><span class="bcl-sticker bcl-sticker--target" aria-hidden="true"></span><span class="bcl-sticker bcl-sticker--chat" aria-hidden="true"></span></blockquote>
       </section>
       <section class="bcl-role" aria-labelledby="bcl-role-heading">
-        <h2 id="bcl-role-heading" class="ink-text">MY ROLE</h2><p class="bcl-copy">I owned research and the end-to-end experience, working across product and engineering.</p><div class="bcl-notes"><NoteGrid items={roles} /></div><div class="bcl-ribbons" data-reveal-group><span>CROSS FUNCTION<br />COLLABORATION</span><span>SYSTEM THINKING</span><span>RESEARCH-LED THINKING</span></div>
+        <h2 id="bcl-role-heading" class="ink-text">MY ROLE</h2><p class="bcl-copy">I owned research and the end-to-end experience, working across product and engineering.</p><div class="bcl-notes"><NoteGrid items={roles} /></div><div class="bcl-ribbons" data-reveal-group><span>CROSS FUNCTION<br />{' '}COLLABORATION</span><span>SYSTEM THINKING</span><span>RESEARCH-LED THINKING</span></div>
       </section>
       <section class="bcl-research" aria-labelledby="bcl-research-heading">
         <h2 id="bcl-research-heading" class="ink-text">RESEARCH</h2><p class="bcl-copy">Two weeks of heuristic audit, five moderated usability sessions on the live product, competitive benchmarking, and desk research into career coaching and identity frameworks.</p>
@@ -110,7 +111,7 @@ const impact = [
       <section class="bcl-coaching" aria-labelledby="bcl-coaching-heading">
         <h3 id="bcl-coaching-heading" class="bcl-subheading">3. Career Coaching &amp; Identity Research</h3><p class="bcl-copy">Desk research across two connected questions: how good coaching works, and what a career identity is actually made of, drawing on coaching platforms, reflection apps, AI career tools, and the literature on professional identity <em>(Schein’s Career Anchors, Ibarra, Savickas, Self-Determination Theory).</em></p>
         <div class="bcl-notes bcl-coaching-notes"><NoteGrid items={coaching} /></div>
-        <p class="bcl-copy"><strong>What identity is made of?</strong><br />Identity isn't one data point, and it isn't stable. That rules out a one-time quiz and points to something the product builds over time.</p>
+        <p class="bcl-copy"><strong>What identity is made of?</strong><br />{' '}Identity isn't one data point, and it isn't stable. That rules out a one-time quiz and points to something the product builds over time.</p>
         <ComparisonTable headings={['Dimension','What AI Needs in it']} rows={dimensions} />
       </section>
       <section class="bcl-competition" aria-labelledby="bcl-competition-heading">
@@ -119,22 +120,22 @@ const impact = [
       <section class="bcl-synthesis" aria-labelledby="bcl-synthesis-heading">
         <h2 id="bcl-synthesis-heading" class="ink-text">SYNTHESIS</h2><p class="bcl-copy">The three become one mechanic: a progressive disclosure loop where structure earns trust, trust unlocks context, and context makes the next conversation better than the last.</p>
         <div class="bcl-synthesis-cards" data-reveal-group>
-          <article class="bcl-backed"><div class="bcl-paper"><h3>01. Trust is structural, not visual <em>(From audit)</em></h3><p>The top heuristic violations were unpredictable patterns, no system<br />feedback, no way back. Users won't disclose to a product that</p></div></article>
-          <article class="bcl-backed"><div class="bcl-paper"><h3>02. Generic context produces generic advice <em>(From usability testing)</em></h3><p>The top heuristic violations were unpredictable patterns, no system<br />feedback, no way back. Users won't disclose to a product that</p></div></article>
-          <article class="bcl-backed"><div class="bcl-paper"><h3>03. Open-ended reflection overwhelms <em>(From coaching and identity research)</em></h3><p>.A blank chat expects users to know what to ask. The Trail replaces this with<br />small, guided steps that deepen over time.</p></div></article>
+          <article class="bcl-backed"><div class="bcl-paper"><h3>01. Trust is structural, not visual <em>(From audit)</em></h3><p>The top heuristic violations were unpredictable patterns, no system<br />{' '}feedback, no way back. Users won't disclose to a product that</p></div></article>
+          <article class="bcl-backed"><div class="bcl-paper"><h3>02. Generic context produces generic advice <em>(From usability testing)</em></h3><p>The top heuristic violations were unpredictable patterns, no system<br />{' '}feedback, no way back. Users won't disclose to a product that</p></div></article>
+          <article class="bcl-backed"><div class="bcl-paper"><h3>03. Open-ended reflection overwhelms <em>(From coaching and identity research)</em></h3><p>.A blank chat expects users to know what to ask. The Trail replaces this with<br />{' '}small, guided steps that deepen over time.</p></div></article>
         </div>
-        <p class="bcl-synthesis-quote">"Users don't just want an AI that answers career questions.<br />They want an AI that understands who they are first."</p>
+        <p class="bcl-synthesis-quote">"Users don't just want an AI that answers career questions.<br />{' '}They want an AI that understands who they are first."</p>
       </section>
       <section class="bcl-architecture" aria-labelledby="bcl-architecture-heading"><h2 id="bcl-architecture-heading" class="ink-text">INFORMATION ARCHITECTURE</h2><img class="bcl-wide-image" src={`${assets}identity-trail-ia 1.png`} width="2540" height="1136" alt="Identity Trail architecture connecting Future Me, My Obstacles, Current Me and Dashboard" /></section>
       <section class="bcl-solution" aria-labelledby="bcl-solution-heading"><h2 id="bcl-solution-heading" class="ink-text">THE SOLUTION</h2><p class="bcl-copy">The problem had two halves, so the solution did too. in the order the research demanded: fix trust, then personalise.</p></section>
       <section class="bcl-redesign" aria-labelledby="bcl-redesign-heading">
         <h3 id="bcl-redesign-heading" class="bcl-subheading">Part 1 Redesigning the Chat</h3><div class="bcl-copy" data-reveal><p>Identity Trail asks users to disclose. Nobody discloses to a product that behaves unpredictably. So the audit findings had to be resolved first not as polish, but as the precondition for everything else.</p><p>The audit covered 12 screens, but I prioritized chat: it's where disclosure happens, where the coaching actually takes place, and where testing showed trust collapsing fastest. Fixing it moved the most, soonest. The remaining findings were documented as a prioritized backlog for the team.</p></div>
-        <img class="bcl-wide-image" src={`${assets}redesign.png`} width="2554" height="891" alt="Original coaching chat compared with the redesigned conversation interface" />
+        <ResponsiveScreens class="bcl-wide-image" src={`${assets}redesign.png`} width={2554} height={891} alt="Original coaching chat compared with the redesigned conversation interface" crops={[[0,0,1277,891],[1277,0,1277,891]]} />
         <ComparisonTable headings={['Audit Findings','What the redesign does']} rows={redesign} /><p class="bcl-copy">The principle: predictability is the trust signal. Users don't say "this violates consistency heuristics", they say "it feels like a student project" and close the tab.</p>
       </section>
       <section class="bcl-trail" aria-labelledby="bcl-trail-heading">
         <h3 id="bcl-trail-heading" class="bcl-subheading">Part 2 Identity Trail</h3><div class="bcl-copy" data-reveal><p>A guided Current Me → Future Me journey that builds a professional identity picture the AI can actually coach against.</p><p>Why a trail, not a quiz. Asking for all six dimensions upfront is an interrogation. The trail is built incrementally: a short start unlocks personalization immediately, then deepens each session. Every step gives something back, so disclosure feels like an exchange rather than a form.</p></div>
-        <img class="bcl-wide-image" src={`${assets}identity trail.png`} width="2556" height="2716" alt="Identity Trail screens showing Future ID, Current Me, obstacles, progress dashboard and thoughts" /><p class="bcl-copy">The loop, running forwards: Every session uses the profile, and every session enriches it.</p><img class="bcl-flow-image" src={`${assets}identity-end-to-end-flow 1.png`} width="2140" height="366" alt="Onboarding leads to identity discovery, dashboard and personalised guidance, which loops back to the dashboard" />
+        <ResponsiveScreens class="bcl-wide-image" src={`${assets}identity trail.png`} width={2556} height={2716} alt="Identity Trail screens showing Future ID, Current Me, obstacles, progress dashboard and thoughts" crops={[[0,0,1260,852],[1298,0,1258,852],[0,892,1260,894],[1298,892,1258,894],[0,1825,1260,891],[1298,1825,1258,891]]} /><p class="bcl-copy">The loop, running forwards: Every session uses the profile, and every session enriches it.</p><img class="bcl-flow-image" src={`${assets}identity-end-to-end-flow 1.png`} width="2140" height="366" alt="Onboarding leads to identity discovery, dashboard and personalised guidance, which loops back to the dashboard" />
       </section>
       <section class="bcl-impact" aria-labelledby="bcl-impact-heading"><h2 id="bcl-impact-heading" class="ink-text">IMPACT</h2><ComparisonTable headings={['','Before','After']} rows={impact} impact /><h3 class="bcl-subheading">Three things it produced</h3><div class="bcl-outcomes"><InsightNotes items={[{title:"A prioritised\nroadmap the\nteam didn't have",text:''},{title:'A working\ndefinition of career\nidentity',text:''},{title:'A retention\nmechanic, not just\na feature',text:''}]} /></div></section>
       <section class="bcl-more" aria-labelledby="bcl-more-heading"><h2 id="bcl-more-heading" class="bcl-more-heading"><span class="bcl-backed"><b class="bcl-paper"><span class="ink-text">MORE</span></b></span><span class="bcl-backed"><b class="bcl-paper"><span class="ink-text">WORKS</span></b></span></h2><div class="bcl-more-cards">
